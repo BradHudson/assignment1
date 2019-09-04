@@ -12,15 +12,15 @@ from sklearn.tree import DecisionTreeClassifier
 
 #Abalone
 
-column_names = ["sex", "length", "diameter", "height", "whole weight",
-                "shucked weight", "viscera weight", "shell weight", "rings"]
-df = pd.read_csv("Dataset/abalone.data", names=column_names)
+# column_names = ["sex", "length", "diameter", "height", "whole weight",
+#                 "shucked weight", "viscera weight", "shell weight", "rings"]
+df = pd.read_csv("Dataset/pendigits.data", names=column_names)
 
 # df['rings'] = df['rings'].apply(lambda x: 'young' if x <= 7.5 else ('adult' if x <= 13 else 'old'))
 
-for label in "MFI":
-    df[label] = df["sex"] == label
-del df["sex"]
+# for label in "MFI":
+#     df[label] = df["sex"] == label
+# del df["sex"]
 
 
 #Decision Tree
