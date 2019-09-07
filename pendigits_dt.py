@@ -12,6 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import StandardScaler
 from datetime import datetime
+from sklearn.model_selection import cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import make_scorer, accuracy_score, f1_score, confusion_matrix
 from sklearn.model_selection import validation_curve
@@ -116,36 +117,58 @@ def main():
 
     plt.legend(loc="best")
 
-    plt.show()
+    plt.savefig('pendigitslearningcurve.png')
+    plt.close()
 
-    #validation curve
-    # Calculate mean and standard deviation for training set scores
-    train_mean = np.mean(v_train_scores, axis=1)
-    train_std = np.std(v_train_scores, axis=1)
+    # #validation curve
+    #     # # Calculate mean and standard deviation for training set scores
+    #     # train_mean = np.mean(v_train_scores, axis=1)
+    #     # train_std = np.std(v_train_scores, axis=1)
+    #     #
+    #     # # Calculate mean and standard deviation for test set scores
+    #     # test_mean = np.mean(v_test_scores, axis=1)
+    #     # test_std = np.std(v_test_scores, axis=1)
+    #     #
+    #     # # Plot mean accuracy scores for training and test sets
+    #     # plt.plot(max_depths, train_mean, label="Training score", color="black")
+    #     # plt.plot(max_depths, test_mean, label="Cross-validation score", color="dimgrey")
+    #     #
+    #     # # Plot accurancy bands for training and test sets
+    #     # plt.fill_between(max_depths, train_mean - train_std, train_mean + train_std, color="gray")
+    #     # plt.fill_between(max_depths, test_mean - test_std, test_mean + test_std, color="gainsboro")
+    #     #
+    #     # # Create plot
+    #     # plt.title("Validation Curve Max Depth vs Accuracy")
+    #     # plt.xlabel("Max Depth")
+    #     # plt.ylabel("Accuracy Score")
+    #     # plt.tight_layout()
+    #     # plt.legend(loc="best")
+    #     # plt.show()
 
-    # Calculate mean and standard deviation for test set scores
-    test_mean = np.mean(v_test_scores, axis=1)
-    test_std = np.std(v_test_scores, axis=1)
+    max_depth_array = []
+    training_depth_array = []
+    testing_depth_array = []
+    cross_val_score_array = []
 
-    # Plot mean accuracy scores for training and test sets
-    plt.plot(max_depths, train_mean, label="Training score", color="black")
-    plt.plot(max_depths, test_mean, label="Cross-validation score", color="dimgrey")
+    for i in range(1, 50):
+        max_depth_array.append(i)
+        learner = DecisionTreeClassifier(max_depth=i + 1, random_state=seed)
+        cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
 
-    # Plot accurancy bands for training and test sets
-    plt.fill_between(max_depths, train_mean - train_std, train_mean + train_std, color="gray")
-    plt.fill_between(max_depths, test_mean - test_std, test_mean + test_std, color="gainsboro")
+        learner.fit(training_x, training_y)
+        training_depth_array.append(learner.score(training_x, training_y))
+        testing_depth_array.append(learner.score(testing_x, testing_y))
 
-    # Create plot
-    plt.title("Validation Curve Max Depth vs Accuracy")
-    plt.xlabel("Max Depth")
-    plt.ylabel("Accuracy Score")
-    plt.tight_layout()
-    plt.legend(loc="best")
-    plt.show()
-
-
-    t_d = datetime.now() - t
-    timings['DT'] = t_d.seconds
+    plt.plot(max_depth_array, training_depth_array, label='Training')
+    plt.plot(max_depth_array, testing_depth_array, label='Testing')
+    plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
+    plt.legend(loc=4, fontsize=8)
+    plt.title("Accuracy vs Max Depth")
+    plt.ylabel('Accuracy %')
+    plt.xlabel('Max Depth')
+    plt.xlim([1, 50])
+    plt.savefig('pendigitsmaxdepth.png')
+    plt.close()
 
 
 if __name__== "__main__":

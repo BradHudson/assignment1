@@ -5,6 +5,7 @@ from sklearn.model_selection import learning_curve
 from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.model_selection import train_test_split
+from sklearn.model_selection import cross_val_score
 from sklearn.tree import DecisionTreeClassifier
 from datetime import datetime
 from sklearn.model_selection import validation_curve
@@ -12,9 +13,6 @@ from sklearn.model_selection import validation_curve
 
 def main():
     df = pd.read_csv("Dataset/pendigits.csv", header=None)
-
-    timings = {}
-    use_cv = False
     seed = 200
     np.random.seed(seed)
 
@@ -23,11 +21,7 @@ def main():
 
     training_x, testing_x, training_y, testing_y = train_test_split(X, Y, test_size=0.4, random_state=seed, shuffle=True)
 
-    t = datetime.now()
-
-    n_estimators = np.arange(1, 25, 1)
-
-    learner = DecisionTreeClassifier(criterion='entropy',max_depth=9,random_state=seed)
+    learner = DecisionTreeClassifier(criterion='entropy',max_depth=4,random_state=seed)
     boosted_learner = AdaBoostClassifier(algorithm='SAMME', base_estimator=learner, random_state=seed)
 
     boosted_learner.fit(training_x, training_y)
@@ -46,13 +40,6 @@ def main():
         cv=10,
         train_sizes=np.linspace(.1, 1.0, 10),
         random_state=seed)
-    v_train_scores, v_test_scores = validation_curve(boosted_learner,
-                                                 training_x,
-                                                 training_y,
-                                                 param_name="n_estimators",
-                                                 param_range=n_estimators,
-                                                 cv=10,
-                                                 n_jobs=-1)
 
     #learning Curve
     train_scores_mean = np.mean(train_scores, axis=1)
@@ -75,36 +62,60 @@ def main():
 
     plt.legend(loc="best")
 
-    plt.show()
+    plt.savefig('pendigitsboostedlearningcurve.png')
+    plt.close()
 
-    #validation curve
-    # Calculate mean and standard deviation for training set scores
-    train_mean = np.mean(v_train_scores, axis=1)
-    train_std = np.std(v_train_scores, axis=1)
+    max_depth_array = []
+    training_depth_array = []
+    testing_depth_array = []
+    cross_val_score_array = []
 
-    # Calculate mean and standard deviation for test set scores
-    test_mean = np.mean(v_test_scores, axis=1)
-    test_std = np.std(v_test_scores, axis=1)
+    for i in range(1, 50):
+        max_depth_array.append(i)
+        learner2 = DecisionTreeClassifier(max_depth=i + 1, random_state=seed)
+        boosted_learner2 = AdaBoostClassifier(algorithm='SAMME', base_estimator=learner2, random_state=seed)
+        cross_val_score_array.append(cross_val_score(boosted_learner2, training_x, training_y, cv=3).mean())
 
-    # Plot mean accuracy scores for training and test sets
-    plt.plot(n_estimators, train_mean, label="Training score", color="black")
-    plt.plot(n_estimators, test_mean, label="Cross-validation score", color="dimgrey")
+        boosted_learner2.fit(training_x, training_y)
+        training_depth_array.append(boosted_learner2.score(training_x, training_y))
+        testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
 
-    # Plot accurancy bands for training and test sets
-    plt.fill_between(n_estimators, train_mean - train_std, train_mean + train_std, color="gray")
-    plt.fill_between(n_estimators, test_mean - test_std, test_mean + test_std, color="gainsboro")
+    plt.plot(max_depth_array, training_depth_array, label='Training')
+    plt.plot(max_depth_array, testing_depth_array, label='Testing')
+    plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
+    plt.legend(loc=4, fontsize=8)
+    plt.title("Accuracy vs Max Depth")
+    plt.ylabel('Accuracy %')
+    plt.xlabel('Max Depth')
+    plt.xlim([1, 50])
+    plt.savefig('pendigitsboostedmaxdepth.png')
+    plt.close()
 
-    # Create plot
-    plt.title("Validation Curve N Estimators vs Accuracy")
-    plt.xlabel("Max Depth")
-    plt.ylabel("Accuracy Score")
-    plt.tight_layout()
-    plt.legend(loc="best")
-    plt.show()
+    estimator_array = []
+    training_depth_array = []
+    testing_depth_array = []
+    cross_val_score_array = []
 
+    for i in range(1, 50):
+        estimator_array.append(i)
+        learner2 = DecisionTreeClassifier(random_state=seed)
+        boosted_learner2 = AdaBoostClassifier(algorithm='SAMME', base_estimator=learner2, random_state=seed, n_estimators= i + 1)
+        cross_val_score_array.append(cross_val_score(boosted_learner2, training_x, training_y, cv=3).mean())
 
-    t_d = datetime.now() - t
-    timings['DT'] = t_d.seconds
+        boosted_learner2.fit(training_x, training_y)
+        training_depth_array.append(boosted_learner2.score(training_x, training_y))
+        testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
+
+    plt.plot(estimator_array, training_depth_array, label='Training')
+    plt.plot(estimator_array, testing_depth_array, label='Testing')
+    plt.plot(estimator_array, cross_val_score_array, label='Cross Validation')
+    plt.legend(loc=4, fontsize=8)
+    plt.title("Accuracy vs Estimator Count")
+    plt.ylabel('Accuracy %')
+    plt.xlabel('Number of Estimators')
+    plt.xlim([1, 50])
+    plt.savefig('pendigitsboostedestimators.png')
+    plt.close()
 
 
 if __name__== "__main__":
