@@ -6,8 +6,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import learning_curve
 from sklearn.model_selection import ShuffleSplit
 from sklearn.model_selection import GridSearchCV
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
@@ -20,21 +19,22 @@ from sklearn.model_selection import validation_curve
 
 
 def main():
-    df = pd.read_csv("Dataset/pendigits.csv", header=None)
+    df = pd.read_csv("Dataset/winedata.csv", delimiter=";")
+
+    indeksDaarlig = df.loc[df['quality'] <= 6].index
+    indeksGod = df.loc[df['quality'] > 6].index
+    df.iloc[indeksDaarlig, df.columns.get_loc('quality')] = 0
+    df.iloc[indeksGod, df.columns.get_loc('quality')] = 1
     seed = 200
     np.random.seed(seed)
 
     X = np.array(df.iloc[:, 0:-1])
     Y = np.array(df.iloc[:, -1])
 
-    training_x, testing_x, training_y, testing_y = train_test_split(X, Y, test_size=0.4, random_state=seed, shuffle=True)
+    training_x, testing_x, training_y, testing_y = train_test_split(X, Y, test_size=0.4, random_state=seed,
+                                                                    shuffle=True)
 
-    clf = DecisionTreeClassifier(criterion='entropy', max_depth=9, random_state=seed)
-
-    learner = Pipeline([('Scale', StandardScaler()), ('DT', clf)])
-
-
-
+    learner = KNeighborsClassifier(n_neighbors=5)
     learner.fit(training_x, training_y)
     print('Training Score: ' + str(learner.score(training_x,training_y)))
     print('Testing Score: ' + str(learner.score(testing_x, testing_y)))
@@ -73,7 +73,7 @@ def main():
 
     plt.legend(loc="best")
 
-    plt.savefig('pendigitslearningcurve.png')
+    plt.savefig('winelearningKNNcurve.png')
     plt.close()
 
     max_depth_array = []
@@ -83,10 +83,7 @@ def main():
 
     for i in range(1, 50):
         max_depth_array.append(i)
-        clf = DecisionTreeClassifier(max_depth=i + 1, random_state=seed)
-
-        learner = Pipeline([('Scale', StandardScaler()), ('DT', clf)])
-        # learner = DecisionTreeClassifier(max_depth=i + 1, random_state=seed)
+        learner = KNeighborsClassifier(n_neighbors = i + 1)
         cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
 
         learner.fit(training_x, training_y)
@@ -97,11 +94,11 @@ def main():
     plt.plot(max_depth_array, testing_depth_array, label='Testing')
     plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
     plt.legend(loc=4, fontsize=8)
-    plt.title("Accuracy vs Max Depth")
+    plt.title("Accuracy vs K Neighbors")
     plt.ylabel('Accuracy %')
-    plt.xlabel('Max Depth')
+    plt.xlabel('K Neighbors')
     plt.xlim([1, 50])
-    plt.savefig('pendigitsmaxdepth.png')
+    plt.savefig('wineKNN.png')
     plt.close()
 
 

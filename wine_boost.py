@@ -96,9 +96,9 @@ def main():
     testing_depth_array = []
     cross_val_score_array = []
 
+    learner2 = DecisionTreeClassifier(max_depth= 2,random_state=seed)
     for i in range(1, 50):
         estimator_array.append(i)
-        learner2 = DecisionTreeClassifier(random_state=seed)
         boosted_learner2 = AdaBoostClassifier(algorithm='SAMME', base_estimator=learner2, random_state=seed,
                                               n_estimators=i + 1)
         cross_val_score_array.append(cross_val_score(boosted_learner2, training_x, training_y, cv=3).mean())
