@@ -29,11 +29,10 @@ def main():
 
     training_x, testing_x, training_y, testing_y = train_test_split(X, Y, test_size=0.4, random_state=seed, shuffle=True)
 
-    clf = DecisionTreeClassifier(criterion='entropy', max_depth=9, random_state=seed)
+    max_depths = np.arange(1, 50, 1)
+    params = {'criterion': ['gini','entropy'], 'max_depth': max_depths}
 
-    learner = Pipeline([('Scale', StandardScaler()), ('DT', clf)])
-
-
+    learner = DecisionTreeClassifier(criterion='entropy',max_depth=9,random_state=seed)
 
     learner.fit(training_x, training_y)
     print('Training Score: ' + str(learner.score(training_x,training_y)))
@@ -83,10 +82,7 @@ def main():
 
     for i in range(1, 50):
         max_depth_array.append(i)
-        clf = DecisionTreeClassifier(max_depth=i + 1, random_state=seed)
-
-        learner = Pipeline([('Scale', StandardScaler()), ('DT', clf)])
-        # learner = DecisionTreeClassifier(max_depth=i + 1, random_state=seed)
+        learner = DecisionTreeClassifier(max_depth=i + 1, random_state=seed)
         cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
 
         learner.fit(training_x, training_y)

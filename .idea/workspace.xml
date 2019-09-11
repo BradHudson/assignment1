@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="014216b4-2ce9-41f7-b963-ce1dc973840b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pendigitsKNN.png" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitsKNN.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pendigits_dt.py" beforeDir="false" afterPath="$PROJECT_DIR$/pendigits_dt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pendigitslearningcurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitslearningcurve.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pendigitsmaxdepth.png" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitsmaxdepth.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine_boost.py" beforeDir="false" afterPath="$PROJECT_DIR$/wine_boost.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wineboostedestimators.png" beforeDir="false" afterPath="$PROJECT_DIR$/wineboostedestimators.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pendigitsboostedestimators.png" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitsboostedestimators.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pendigitsboostedmaxdepth.png" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitsboostedmaxdepth.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,71 +15,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wine_boost.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pendigitsmaster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1185">
-              <caret line="86" column="38" lean-forward="true" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
+            <state relative-caret-position="391">
+              <caret line="146" column="4" selection-start-line="146" selection-start-column="6" selection-end-line="172" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wineboostedmaxdepth.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/wineboostedestimators.png">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/ensemble/weight_boosting.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="901" column="27" lean-forward="true" selection-start-line="901" selection-start-column="27" selection-end-line="901" selection-end-column="27" />
+            <state relative-caret-position="243">
+              <caret line="386" column="8" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dataset/pendigitstrain.csv">
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-          <provider selected="true" editor-type-id="csv-text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dataset/winedata.csv">
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="-22853">
-              <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Dataset/pendigits.csv">
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state relative-caret-position="397">
-              <caret line="10982" column="49" lean-forward="true" selection-start-line="10982" selection-start-column="49" selection-end-line="10982" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pendigits_dt.py">
+        <entry file="file://$PROJECT_DIR$/pendigitsKNN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="99" column="34" lean-forward="true" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+            <state relative-caret-position="660">
+              <caret line="83" column="61" lean-forward="true" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -90,13 +49,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pendigitslearningcurve.png">
+        <entry file="file://$PROJECT_DIR$/pendigitsboostedLearningRate.png">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pendigitsmaxdepth.png">
+        <entry file="file://$PROJECT_DIR$/pendigitsboostedmaxdepth.png">
           <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pendigitsboostedestimators.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_validation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="258" column="4" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="4" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -110,10 +83,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>unkn</find>
-      <find>dff</find>
-      <find>cross</find>
-      <find>cross_validate</find>
       <find>model_selection</find>
       <find>train</find>
       <find>train_test</find>
@@ -131,7 +100,6 @@
       <find>?</find>
       <find>base_estimator</find>
       <find>learner</find>
-      <find>max_</find>
       <find>param_name</find>
       <find>scoring</find>
       <find>max_depth</find>
@@ -140,6 +108,11 @@
       <find>eucl</find>
       <find>learning_rate</find>
       <find>max_depths</find>
+      <find>class_weight</find>
+      <find>entropy</find>
+      <find>max_</find>
+      <find>weights</find>
+      <find>metric</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -162,18 +135,19 @@
         <option value="$PROJECT_DIR$/dt.py" />
         <option value="$PROJECT_DIR$/pendigits_boost.py" />
         <option value="$PROJECT_DIR$/wine_dt.py" />
-        <option value="$PROJECT_DIR$/pendigitsKNN.py" />
         <option value="$PROJECT_DIR$/wineKNN.py" />
         <option value="$PROJECT_DIR$/wine_boost.py" />
         <option value="$PROJECT_DIR$/pendigits_dt.py" />
+        <option value="$PROJECT_DIR$/pendigitsKNN.py" />
+        <option value="$PROJECT_DIR$/pendigitsmaster.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="3493" />
     <option name="y" value="23" />
-    <option name="width" value="1486" />
-    <option name="height" value="1050" />
+    <option name="width" value="1627" />
+    <option name="height" value="1417" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -189,11 +163,6 @@
             <path>
               <item name="7641" type="b2602c69:ProjectViewProjectNode" />
               <item name="7641" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="7641" type="b2602c69:ProjectViewProjectNode" />
-              <item name="7641" type="462c0819:PsiDirectoryNode" />
-              <item name="Dataset" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -226,7 +195,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pendigits_dt">
+  <component name="RunManager" selected="Python.pendigitsmaster">
     <configuration name="pendigitsKNN" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="7641" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -261,6 +230,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pendigits_dt.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pendigitsmaster" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="7641" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pendigitsmaster.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -311,34 +301,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="wine_dt" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="7641" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/wine_dt.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pendigitsmaster" />
         <item itemvalue="Python.pendigits_dt" />
         <item itemvalue="Python.wine_boost" />
         <item itemvalue="Python.pendigitsKNN" />
         <item itemvalue="Python.wineKNN" />
-        <item itemvalue="Python.wine_dt" />
       </list>
     </recent_temporary>
   </component>
@@ -364,16 +333,16 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3493" y="23" width="1486" height="1050" extended-state="0" />
+    <frame x="3493" y="23" width="1627" height="1417" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2539249" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23163138" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3434238" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.20619336" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4301887" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.20603773" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -415,6 +384,11 @@
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>training_depth_array[0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>estimator.get_params</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -454,31 +428,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>df.shae</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file:///usr/local/lib/python3.7/site-packages/pandas/core/reshape/reshape.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="751" column="4" selection-start-line="751" selection-start-column="4" selection-end-line="751" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/adult-training.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="32544" column="77" selection-start-line="32544" selection-start-column="77" selection-end-line="32544" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/iris.names">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Dataset/iris.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -528,13 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="489" column="6" selection-start-line="489" selection-start-column="6" selection-end-line="489" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.3/python_stubs/1282773061/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="4782" column="8" selection-start-line="4782" selection-start-column="8" selection-end-line="4782" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -594,13 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16035">
-          <caret line="1086" column="53" selection-start-line="1086" selection-start-column="46" selection-end-line="1086" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Dataset/abalone.data">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8985">
@@ -608,33 +546,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pendigitsboostedestimators.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pendigits_boost.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="28" column="30" selection-start-line="28" selection-start-column="30" selection-end-line="28" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pendigitsboostedmaxdepth.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/winelearningcurve.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/winemaxdepth.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/tree/tree.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="749" column="26" selection-start-line="749" selection-start-column="17" selection-end-line="749" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pendigitsboostedlearningcurve.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/wineboostedlearningcurve.png">
@@ -659,19 +574,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pendigitsKNN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="49" column="53" lean-forward="true" selection-start-line="49" selection-start-column="53" selection-end-line="49" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pendigitsKNN.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/pendigitslearningKNNcurve.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -690,16 +592,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/neighbors/classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="181" column="25" lean-forward="true" selection-start-line="181" selection-start-column="25" selection-end-line="181" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wineboostedmaxdepth.png">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/wine_boost.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -723,13 +615,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/wineboostedestimators.png">
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/pipeline.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="132" column="8" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitslearningcurve.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/ensemble/weight_boosting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="901" column="27" lean-forward="true" selection-start-line="901" selection-start-column="27" selection-end-line="901" selection-end-column="27" />
+    <entry file="file://$PROJECT_DIR$/Dataset/pendigits.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state>
+          <caret line="9878" selection-start-line="9878" selection-end-line="9878" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="10991" column="49" selection-start-line="10991" selection-start-column="49" selection-end-line="10991" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -742,42 +649,115 @@
           <caret line="8" column="66" lean-forward="true" selection-start-line="8" selection-start-column="66" selection-end-line="8" selection-end-column="66" />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/pendigits.csv">
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="397">
-          <caret line="10982" column="49" lean-forward="true" selection-start-line="10982" selection-start-column="49" selection-end-line="10982" selection-end-column="49" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="10991" column="49" selection-start-line="10991" selection-start-column="49" selection-end-line="10991" selection-end-column="49" />
-        </state>
+        <state relative-caret-position="-5" />
       </provider>
     </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/pipeline.py">
+    <entry file="file://$PROJECT_DIR$/wineboostedmaxdepth.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsboostedlearningcurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wineboostedestimators.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigits_dt.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="132" column="8" selection-start-line="132" selection-start-column="8" selection-end-line="132" selection-end-column="8" />
+        <state relative-caret-position="182">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pendigitslearningcurve.png">
+    <entry file="file://$PROJECT_DIR$/pendigitsmaxdepthGini.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigits_boost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="117" column="15" lean-forward="true" selection-start-line="93" selection-start-column="4" selection-end-line="117" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsmaxdepthEntropy.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/pendigitsmaxdepth.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pendigits_dt.py">
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/tree/tree.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="99" column="34" lean-forward="true" selection-start-line="99" selection-start-column="34" selection-end-line="99" selection-end-column="34" />
+        <state relative-caret-position="243">
+          <caret line="746" column="8" selection-start-line="746" selection-start-column="8" selection-end-line="746" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2018.3/python_stubs/1282773061/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="4206" column="8" selection-start-line="4206" selection-start-column="8" selection-end-line="4206" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="258" column="4" selection-start-line="258" selection-start-column="4" selection-end-line="258" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsboostedestimators.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsboostedmaxdepth.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/matplotlib/pyplot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="2434" column="4" selection-start-line="2434" selection-start-column="4" selection-end-line="2434" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/neighbors/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="289" column="51" lean-forward="true" selection-start-line="289" selection-start-column="51" selection-end-line="289" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsKNN.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/ensemble/weight_boosting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="386" column="8" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsKNN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="83" column="61" lean-forward="true" selection-start-line="83" selection-start-column="61" selection-end-line="83" selection-end-column="61" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsboostedLearningRate.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pendigitsmaster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="146" column="4" selection-start-line="146" selection-start-column="6" selection-end-line="172" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
