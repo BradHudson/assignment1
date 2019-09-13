@@ -15,7 +15,7 @@ from sklearn.model_selection import GridSearchCV
 from sklearn import svm
 
 def main():
-    df = pd.read_csv("Dataset/pendigits.csv", header=None)
+    df = pd.read_csv("Dataset/winedata.csv", delimiter=";")
     seed = 200
     np.random.seed(seed)
 
@@ -29,32 +29,32 @@ def main():
     testing_x = standardScalerX.fit_transform(testing_x1)
 
 
-    # DT Max Depth Gini
-    max_depth_array = []
-    training_depth_array = []
-    testing_depth_array = []
-    cross_val_score_array = []
-
-    print('DT Max Depth Gini')
-    for i in range(1, 50):
-        max_depth_array.append(i)
-        learner = DecisionTreeClassifier(criterion='gini',max_depth=i + 1, random_state=seed)
-        cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
-
-        learner.fit(training_x, training_y)
-        training_depth_array.append(learner.score(training_x, training_y))
-        testing_depth_array.append(learner.score(testing_x, testing_y))
-
-    plt.plot(max_depth_array, training_depth_array, label='Training')
-    plt.plot(max_depth_array, testing_depth_array, label='Testing')
-    plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
-    plt.legend(loc=4, fontsize=8)
-    plt.title("Accuracy vs Max Depth")
-    plt.ylabel('Accuracy %')
-    plt.xlabel('Max Depth')
-    plt.xlim([1, 50])
-    plt.savefig('PenDigitsPlots/pendigitsmaxdepthGini.png')
-    plt.close()
+    # # DT Max Depth Gini
+    # max_depth_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('DT Max Depth Gini')
+    # for i in range(1, 50):
+    #     max_depth_array.append(i)
+    #     learner = DecisionTreeClassifier(criterion='gini',max_depth=i + 1, random_state=seed)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #
+    # plt.plot(max_depth_array, training_depth_array, label='Training')
+    # plt.plot(max_depth_array, testing_depth_array, label='Testing')
+    # plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Accuracy vs Max Depth")
+    # plt.ylabel('Accuracy %')
+    # plt.xlabel('Max Depth')
+    # plt.xlim([1, 50])
+    # plt.savefig('WinePlots/winemaxdepthGini.png')
+    # plt.close()
     #
     # # DT Max Depth Entropy
     #
@@ -81,7 +81,7 @@ def main():
     # plt.ylabel('Accuracy %')
     # plt.xlabel('Max Depth')
     # plt.xlim([1, 50])
-    # plt.savefig('PenDigitsPlots/pendigitsmaxdepthEntropy.png')
+    # plt.savefig('WinePlots/winemaxdepthEntropy.png')
     # plt.close()
     #
     # max_depths = np.arange(1, 50, 1)
@@ -106,7 +106,7 @@ def main():
     #     train_sizes=np.linspace(.1, 1.0, 10),
     #     random_state=seed)
     #
-    # plot_learning_curve(train_scores, test_scores, train_sizes, 'pendigitsDTLearningCurve.png')
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'wineDTLearningCurve.png')
 
     # Adaboost Max Depth
 
@@ -134,7 +134,7 @@ def main():
     # plt.ylabel('Accuracy %')
     # plt.xlabel('Max Depth')
     # plt.xlim([1, 50])
-    # plt.savefig('PenDigitsPlots/pendigitsboostedmaxdepth.png')
+    # plt.savefig('WinePlots/wineboostedmaxdepth.png')
     # plt.close()
 
     # Adaboost Estimators
@@ -163,7 +163,7 @@ def main():
     # plt.ylabel('Accuracy %')
     # plt.xlabel('Number of Estimators')
     # plt.xlim([1, 50])
-    # plt.savefig('PenDigitsPlots/pendigitsboostedestimators.png')
+    # plt.savefig('WinePlots/wineboostedestimators.png')
     # plt.close()
 
     # Adaboost Learning Rate
@@ -192,7 +192,7 @@ def main():
     # plt.ylabel('Accuracy %')
     # plt.xlabel('Learning Rate')
     # plt.xlim([0, 1])
-    # plt.savefig('PenDigitsPlots/pendigitsboostedLearningRate.png')
+    # plt.savefig('WinePlots/wineboostedLearningRate.png')
     # plt.close()
 
     # max_depths = np.arange(1, 50, 1)
@@ -219,7 +219,7 @@ def main():
     #     train_sizes=np.linspace(.1, 1.0, 10),
     #     random_state=seed)
     #
-    # plot_learning_curve(train_scores, test_scores, train_sizes, 'pendigitsDTLearningCurve.png')
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'wineDTLearningCurve.png')
 
     # KNN Number of Neighbors
 
@@ -246,7 +246,7 @@ def main():
     # plt.ylabel('Accuracy %')
     # plt.xlabel('K Neighbors')
     # plt.xlim([1, 50])
-    # plt.savefig('PenDigitsPlots/pendigitsKNN.png')
+    # plt.savefig('WinePlots/wineKNN.png')
     # plt.close()
     #
     # KNN Weight
@@ -332,7 +332,7 @@ def main():
     # plt.ylabel('Accuracy %')
     # plt.xlabel('K Neighbors')
     # plt.xlim([1, 50])
-    # plt.savefig('PenDigitsPlots/pendigitsANNNeurons.png')
+    # plt.savefig('WinePlots/wineANNNeurons.png')
     # plt.close()
 
     # ANN Neurons per Layers
@@ -363,7 +363,7 @@ def main():
     # plt.ylabel('Accuracy %')
     # plt.xlabel('K Neighbors')
     # plt.xlim([1, 50])
-    # plt.savefig('PenDigitsPlots/pendigitsANNLayers.png')
+    # plt.savefig('WinePlots/wineANNLayers.png')
     # plt.close()
 
     # SVM Kernels Sigmoid vs RBF
