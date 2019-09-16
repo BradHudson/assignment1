@@ -240,63 +240,60 @@ def main():
     #
     # plot_learning_curve(train_scores, test_scores, train_sizes, 'PenDigitsPlots/pendigitsboostedLearningCurve.png')
 
-    # KNN Number of Neighbors
+    # KNN Number of Neighbors with different weights
 
     # knn_array = []
     # training_depth_array = []
     # testing_depth_array = []
     # cross_val_score_array = []
     #
-    # print('KNN Number of Neighbors')
+    # print('KNN Number of Neighbors with Uniform weight')
     # for i in range(1, 50, 2):
     #     knn_array.append(i)
-    #     learner = KNeighborsClassifier(n_neighbors=i)
+    #     learner = KNeighborsClassifier(n_neighbors=i, weights='uniform')
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(knn_array, training_depth_array, label='Training')
-    # plt.plot(knn_array, testing_depth_array, label='Testing')
+    # #plt.plot(knn_array, testing_depth_array, label='Testing')
     # plt.plot(knn_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs K Neighbors")
-    # plt.ylabel('Accuracy %')
+    # plt.title("Cross Validation Score vs K Neighbors Uniform Weight")
+    # plt.ylabel('Score')
     # plt.xlabel('K Neighbors')
     # plt.xlim([1, 50])
-    # plt.savefig('PenDigitsPlots/pendigitsKNN.png')
+    # plt.savefig('PenDigitsPlots/pendigitsUniformKNN.png')
     # plt.close()
     #
-    # KNN Weight
-
     # knn_array = []
     # training_depth_array = []
     # testing_depth_array = []
     # cross_val_score_array = []
     #
-    # print('KNN Weights')
-    # for i in ['uniform','distance']:
+    # print('KNN Number of Neighbors with Distance weight')
+    # for i in range(1, 50, 2):
     #     knn_array.append(i)
-    #     learner = KNeighborsClassifier(weights=i)
+    #     learner = KNeighborsClassifier(n_neighbors=i,weights='distance')
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     # testing_depth_array.append(learner.score(testing_x, testing_y))
     #
-    # print('--------------------------')
-    # print('KNN Uniform Weight Results')
-    # print('Training Accuracy: ' + str(training_depth_array[0]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[0]))
-    # print('Cross Validation Accuracy: ' + str(cross_val_score_array[0]))
-    # print('--------------------------')
-    # print('KNN Distance Weight Results')
-    # print('Training Accuracy: ' + str(training_depth_array[1]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[1]))
-    # print('Cross Validation Accuracy: ' + str(cross_val_score_array[1]))
-    # print('--------------------------')
-    #
+    # plt.plot(knn_array, training_depth_array, label='Training')
+    # # plt.plot(knn_array, testing_depth_array, label='Testing')
+    # plt.plot(knn_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs K Neighbors Distance Weight")
+    # plt.ylabel('Score')
+    # plt.xlabel('K Neighbors')
+    # plt.xlim([1, 50])
+    # plt.savefig('PenDigitsPlots/pendigitsDistanceKNN.png')
+    # plt.close()
+
     # # KNN Metric
     #
     # knn_array = []
@@ -317,22 +314,21 @@ def main():
     # print('--------------------------')
     # print('KNN Manhattan Distance Results')
     # print('Training Accuracy: ' + str(training_depth_array[0]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[0]))
+    # #print('Testing Accuracy: ' + str(testing_depth_array[0]))
     # print('Cross Validation Accuracy: ' + str(cross_val_score_array[0]))
     # print('--------------------------')
     # print('KNN Euclidean Distance Results')
     # print('Training Accuracy: ' + str(training_depth_array[1]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[1]))
+    # #print('Testing Accuracy: ' + str(testing_depth_array[1]))
     # print('Cross Validation Accuracy: ' + str(cross_val_score_array[1]))
     # print('--------------------------')
 
-    # max_depths = np.arange(1, 50, 1)
     # params = {'p': [1, 2],
     #           'weights': ['uniform','distance'], 'n_neighbors': np.arange(1, 50, 2)}
     # learner = KNeighborsClassifier()
     #
     # print('starting grid  search')
-    # knn_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=30)
+    # knn_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
     # knn_cv.fit(training_x, training_y)
     # print(knn_cv.score(testing_x, testing_y))
     # print(knn_cv.best_params_)  # {'weights': 'uniform', 'p': 2, 'n_neighbors': 1}
@@ -413,7 +409,7 @@ def main():
 
     # max_depths = np.arange(1, 50, 1)
     # params = {'hidden_layer_sizes': [(16,16), (8,8), (16,), (8,)],
-    #           'alpha': np.arange(0.0, 10.0, 0.5), 'activation': ['relu', 'logistic']}
+    #           'alpha': np.arange(0.0001, .01, 0.0005), 'activation': ['relu', 'logistic']}
     # learner = MLPClassifier()
     #
     # print('starting grid  search')
@@ -436,6 +432,34 @@ def main():
     #     random_state=seed)
     #
     # plot_learning_curve(train_scores, test_scores, train_sizes, 'PenDigitsPlots/pendigitsANNLearningCurve.png')
+
+    # ANN over max iterations
+
+    # ann_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('ANN Different Epochs')
+    # for i in [200, 400, 600, 800, 1000, 1500, 2000]:
+    #     print('------hey we are on ' + str(i))
+    #     ann_array.append(i)
+    #     learner = MLPClassifier(hidden_layer_sizes=(16,), alpha=0.0, activation='relu') # best params from previous random search
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
+    #
+    # plt.plot(ann_array, training_depth_array, label='Training')
+    # #plt.plot(ann_array, testing_depth_array, label='Testing')
+    # plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs. Max Iterations")
+    # plt.ylabel('Score')
+    # plt.xlabel('Max Number of Iterations')
+    # plt.xlim([0, 2000])
+    # plt.savefig('WinePlots/wineMaxIterations.png')
+    # plt.close()
 
     # SVM Kernels Sigmoid vs RBF
 

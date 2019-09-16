@@ -253,63 +253,60 @@ def main():
     #
     # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineboostedLearningCurve.png')
     #
-    # # KNN Number of Neighbors
-    #
+    # KNN Number of Neighbors
+
     # knn_array = []
     # training_depth_array = []
     # testing_depth_array = []
     # cross_val_score_array = []
     #
-    # print('KNN Number of Neighbors')
+    # print('KNN Number of Neighbors with Uniform Weights')
     # for i in range(1, 50, 2):
     #     knn_array.append(i)
-    #     learner = KNeighborsClassifier(n_neighbors=i)
+    #     learner = KNeighborsClassifier(n_neighbors=i,weights='uniform')
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(knn_array, training_depth_array, label='Training')
-    # plt.plot(knn_array, testing_depth_array, label='Testing')
+    # #plt.plot(knn_array, testing_depth_array, label='Testing')
     # plt.plot(knn_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs K Neighbors")
-    # plt.ylabel('Accuracy %')
+    # plt.title("Cross Validation Score vs K Neighbors Uniform Weights")
+    # plt.ylabel('Score')
     # plt.xlabel('K Neighbors')
     # plt.xlim([1, 50])
-    # plt.savefig('WinePlots/wineKNN.png')
+    # plt.savefig('WinePlots/wineUniformKNN.png')
     # plt.close()
-    #
-    # # KNN Weight
     #
     # knn_array = []
     # training_depth_array = []
     # testing_depth_array = []
     # cross_val_score_array = []
     #
-    # print('KNN Weights')
-    # for i in ['uniform','distance']:
+    # print('KNN Number of Neighbors with Distance Weights')
+    # for i in range(1, 50, 2):
     #     knn_array.append(i)
-    #     learner = KNeighborsClassifier(weights=i)
+    #     learner = KNeighborsClassifier(n_neighbors=i, weights='distance')
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
     #
-    # print('--------------------------')
-    # print('KNN Uniform Weight Results')
-    # print('Training Accuracy: ' + str(training_depth_array[0]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[0]))
-    # print('Cross Validation Accuracy: ' + str(cross_val_score_array[0]))
-    # print('--------------------------')
-    # print('KNN Distance Weight Results')
-    # print('Training Accuracy: ' + str(training_depth_array[1]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[1]))
-    # print('Cross Validation Accuracy: ' + str(cross_val_score_array[1]))
-    # print('--------------------------')
-    #
+    # plt.plot(knn_array, training_depth_array, label='Training')
+    # #plt.plot(knn_array, testing_depth_array, label='Testing')
+    # plt.plot(knn_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs K Neighbors Distance Weights")
+    # plt.ylabel('Score')
+    # plt.xlabel('K Neighbors')
+    # plt.xlim([1, 50])
+    # plt.savefig('WinePlots/wineDistanceKNN.png')
+    # plt.close()
+
     # # KNN Metric
     #
     # knn_array = []
@@ -338,14 +335,12 @@ def main():
     # print('Testing Accuracy: ' + str(testing_depth_array[1]))
     # print('Cross Validation Accuracy: ' + str(cross_val_score_array[1]))
     # print('--------------------------')
-    #
-    # max_depths = np.arange(1, 50, 1)
-    # params = {'p': [1, 2],
-    #           'weights': ['uniform','distance'], 'n_neighbors': np.arange(1, 50, 2)}
+
+    # params = {'p': [1, 2], 'weights': ['uniform','distance'], 'n_neighbors': np.arange(1, 50, 2)}
     # learner = KNeighborsClassifier()
     #
-    # print('starting grid  search')
-    # knn_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=30)
+    # print('starting random  search')
+    # knn_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
     # knn_cv.fit(training_x, training_y)
     # print(knn_cv.score(testing_x, testing_y))
     # print(knn_cv.best_params_)  # {'weights': 'uniform', 'p': 2, 'n_neighbors': 1}
@@ -354,7 +349,6 @@ def main():
     # y_pred = pd.Series(test_y_predicted)
     # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
     #
-    # # final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
     # train_sizes, train_scores, test_scores = learning_curve(
     #     knn_cv,
     #     training_x,
@@ -380,21 +374,21 @@ def main():
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(ann_array, training_depth_array, label='Training')
-    # plt.plot(ann_array, testing_depth_array, label='Testing')
+    # #plt.plot(ann_array, testing_depth_array, label='Testing')
     # plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs Number of Neurons in One Hidden Layer")
-    # plt.ylabel('Accuracy %')
+    # plt.title("Cross Validation Score vs Number of Neurons in One Hidden Layer")
+    # plt.ylabel('Score')
     # plt.xlabel('Number of Neurons')
     # plt.xlim([1, 50])
     # plt.savefig('WinePlots/wineANNNeurons.png')
     # plt.close()
-
-    # ANN Neurons per Layers
-
+    #
+    # # ANN Neurons per Layers
+    #
     # ann_array = []
     # training_depth_array = []
     # testing_depth_array = []
@@ -411,35 +405,34 @@ def main():
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(ann_array, training_depth_array, label='Training')
-    # plt.plot(ann_array, testing_depth_array, label='Testing')
+    # #plt.plot(ann_array, testing_depth_array, label='Testing')
     # plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs Number of Hidden Layers")
-    # plt.ylabel('Accuracy %')
+    # plt.title("Cross Validation Score vs Number of Hidden Layers")
+    # plt.ylabel('Score')
     # plt.xlabel('Number of Hidden Layers')
     # plt.xlim([1, 50])
     # plt.savefig('WinePlots/wineANNLayers.png')
     # plt.close()
-
-    # max_depths = np.arange(1, 50, 1)
-    # params = {'hidden_layer_sizes': [(16,16), (8,8), (16,), (8,)],
-    #           'alpha': np.arange(0.0, 10.0, 0.5), 'activation': ['relu', 'logistic']}
+    #
+    # # ANN Learning Curve
+    #
+    # params = {'hidden_layer_sizes': [(11,11), (5,5), (11,), (5,)], 'alpha': np.arange(0.0001, 0.01, 0.005), 'activation': ['relu', 'logistic']}
     # learner = MLPClassifier()
     #
     # print('starting grid  search')
     # ann_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
     # ann_cv.fit(training_x, training_y)
     # print(ann_cv.score(testing_x, testing_y))
-    # print(ann_cv.best_params_)  # {'hidden_layer_sizes': (16, 16), 'alpha': 0.5, 'activation': 'relu'}
+    # print(ann_cv.best_params_)
     # test_y_predicted = ann_cv.predict(testing_x)
     # y_true = pd.Series(testing_y)
     # y_pred = pd.Series(test_y_predicted)
     # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
     #
-    # # final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
     # train_sizes, train_scores, test_scores = learning_curve(
     #     ann_cv,
     #     training_x,
@@ -450,6 +443,34 @@ def main():
     #
     # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineANNLearningCurve.png')
 
+    # ANN over Epochs
+
+    # ann_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('ANN Different Epochs')
+    # for i in [200, 400, 600, 800, 1000, 1500, 2000]:
+    #     print('------hey we are on ' + str(i))
+    #     ann_array.append(i)
+    #     learner = MLPClassifier(hidden_layer_sizes=(16,16), alpha=0.0001, activation='relu', max_iter=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
+    #
+    # plt.plot(ann_array, training_depth_array, label='Training')
+    # #plt.plot(ann_array, testing_depth_array, label='Testing')
+    # plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs. Max Iterations")
+    # plt.ylabel('Score')
+    # plt.xlabel('Max Number of Iterations')
+    # plt.xlim([0, 2000])
+    # plt.savefig('WinePlots/wineMaxIterations.png')
+    # plt.close()
+
     # SVM Kernels Sigmoid vs RBF
 
     # svm_array = []
@@ -457,43 +478,67 @@ def main():
     # testing_depth_array = []
     # cross_val_score_array = []
     #
-    # print('SVM Kernels')
-    # for i in ['sigmoid','rbf']:
+    # print('SVM Kernels Sigmoid Different Gamma Values')
+    # for i in np.arange(0.01, 1, 0.1):
     #     print('------hey we are on ' + str(i))
     #     svm_array.append(i)
-    #     learner = svm.SVC(kernel=i)
+    #     learner = svm.SVC(kernel='sigmoid', gamma=i)
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
     #
-    # print('--------------------------')
-    # print('SVM Sigmoid Results')
-    # print('Training Accuracy: ' + str(training_depth_array[0]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[0]))
-    # print('Cross Validation Accuracy: ' + str(cross_val_score_array[0]))
-    # print('--------------------------')
-    # print('SVM RBF Results')
-    # print('Training Accuracy: ' + str(training_depth_array[1]))
-    # print('Testing Accuracy: ' + str(testing_depth_array[1]))
-    # print('Cross Validation Accuracy: ' + str(cross_val_score_array[1]))
-    # print('--------------------------')
-
+    # plt.plot(svm_array, training_depth_array, label='Training')
+    # #plt.plot(ann_array, testing_depth_array, label='Testing')
+    # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs. Gamma Values - Sigmoid Kernel")
+    # plt.ylabel('Score')
+    # plt.xlabel('Gamma Values')
+    # plt.xlim([0.00, 1.0])
+    # plt.savefig('WinePlots/wineGammaSigmoid.png')
+    # plt.close()
+    #
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Kernels RBF Different Gamma Values')
+    # for i in np.arange(0.01, 1, 0.1):
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='rbf', gamma=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #     # testing_depth_array.append(learner.score(testing_x, testing_y))
+    #
+    # plt.plot(svm_array, training_depth_array, label='Training')
+    # # plt.plot(ann_array, testing_depth_array, label='Testing')
+    # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs. Gamma Values - RBF Kernel")
+    # plt.ylabel('Score')
+    # plt.xlabel('Gamma Values')
+    # plt.xlim([0.00, 1.0])
+    # plt.savefig('WinePlots/wineGammaRBF.png')
+    # plt.close()
+    #
     # params = {'kernel': ['sigmoid', 'rbf'],
-    #           'gamma': ['auto', 'scale']}
+    #           'gamma': np.arange(0.01, 1, 0.1)}
     # learner = svm.SVC()
     #
     # print('starting grid  search')
     # svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
     # svc_cv.fit(training_x, training_y)
     # print(svc_cv.score(testing_x, testing_y))
-    # print(svc_cv.best_params_)  # {'hidden_layer_sizes': (16, 16), 'alpha': 0.5, 'activation': 'relu'}
+    # print(svc_cv.best_params_)
     # test_y_predicted = svc_cv.predict(testing_x)
     # y_true = pd.Series(testing_y)
     # y_pred = pd.Series(test_y_predicted)
     # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
     #
-    # # final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
     # train_sizes, train_scores, test_scores = learning_curve(
     #     svc_cv,
     #     training_x,
@@ -503,6 +548,34 @@ def main():
     #     random_state=seed)
     #
     # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurve.png')
+
+    # SVM over Epochs
+
+    svm_array = []
+    training_depth_array = []
+    testing_depth_array = []
+    cross_val_score_array = []
+
+    print('ANN Different Epochs')
+    for i in [200, 400, 600, 800, 1000, 1500, 2000]:
+        print('------hey we are on ' + str(i))
+        svm_array.append(i)
+        learner = svm.SVC(kernel='rbf', gamma=0.91, max_iter=i)
+        cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+        learner.fit(training_x, training_y)
+        training_depth_array.append(learner.score(training_x, training_y))
+        #testing_depth_array.append(learner.score(testing_x, testing_y))
+
+    plt.plot(svm_array, training_depth_array, label='Training')
+    #plt.plot(ann_array, testing_depth_array, label='Testing')
+    plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
+    plt.legend(loc=4, fontsize=8)
+    plt.title("Cross Validation Score vs. Max Iterations")
+    plt.ylabel('Score')
+    plt.xlabel('Max Number of Iterations')
+    plt.xlim([0, 2000])
+    plt.savefig('WinePlots/wineSVMMaxIterations.png')
+    plt.close()
 
 
 def plot_learning_curve(train_scores, test_scores, train_sizes, file_name):
