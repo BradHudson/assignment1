@@ -11,23 +11,51 @@ from sklearn.metrics import roc_curve, auc, confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV
 from sklearn import svm
+from sklearn.model_selection import validation_curve
 
 def main():
-    df = pd.read_csv("Dataset/winedata.csv", delimiter=";")
+    df = pd.read_csv("Dataset/winequality-white.csv", delimiter=";")
+
+    n, bins, patches = plt.hist(x=np.array(df.iloc[:, -1]), bins='auto', color='#0504aa',
+                                alpha=0.7)
+    plt.grid(axis='y', alpha=0.75)
+    plt.xlabel('Quality')
+    plt.ylabel('Count')
+    plt.xticks(np.arange(10), ('0','1','2','3','4','5','6','7','8','9'))
+    plt.title('Class Distribution')
+    plt.ylim(ymax=2200)
+    plt.savefig('WinePlots/wineClassDistributionOriginal.png')
+    plt.close()
+
+    lowquality = df.loc[df['quality'] <= 6].index
+    highquality = df.loc[df['quality'] > 6].index
+    df.iloc[lowquality, df.columns.get_loc('quality')] = 0
+    df.iloc[highquality, df.columns.get_loc('quality')] = 1
+
     seed = 200
     np.random.seed(seed)
 
     X = np.array(df.iloc[:, 0:-1])
     Y = np.array(df.iloc[:, -1])
 
-    training_x1, testing_x1, training_y, testing_y = train_test_split(X, Y, test_size=0.3, random_state=seed, shuffle=True)
+    n, bins, patches = plt.hist(x=Y, bins='auto' ,color='#0504aa',
+                                alpha=0.7)
+    plt.grid(axis='y', alpha=0.75)
+    plt.xlabel('Quality')
+    plt.ylabel('Count')
+    plt.xticks(np.arange(2), ('Low', 'High'))
+    plt.title('Class Distribution')
+    plt.ylim(ymax=4000)
+    plt.savefig('WinePlots/wineClassDistribution.png')
+    plt.close()
+
+    training_x1, testing_x1, training_y, testing_y = train_test_split(X, Y, test_size=0.3, random_state=seed, shuffle=True, stratify=Y)
 
     standardScalerX = StandardScaler()
     training_x = standardScalerX.fit_transform(training_x1)
     testing_x = standardScalerX.fit_transform(testing_x1)
-
 
     # # DT Max Depth Gini
     # max_depth_array = []
@@ -46,10 +74,10 @@ def main():
     #     testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(max_depth_array, training_depth_array, label='Training')
-    # plt.plot(max_depth_array, testing_depth_array, label='Testing')
+    # # plt.plot(max_depth_array, testing_depth_array, label='Testing')
     # plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs Max Depth")
+    # plt.title("Accuracy vs Max Depth Gini")
     # plt.ylabel('Accuracy %')
     # plt.xlabel('Max Depth')
     # plt.xlim([1, 50])
@@ -74,42 +102,45 @@ def main():
     #     testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(max_depth_array, training_depth_array, label='Training')
-    # plt.plot(max_depth_array, testing_depth_array, label='Testing')
+    # # plt.plot(max_depth_array, testing_depth_array, label='Testing')
     # plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs Max Depth")
+    # plt.title("Accuracy vs Max Depth Entropy")
     # plt.ylabel('Accuracy %')
     # plt.xlabel('Max Depth')
     # plt.xlim([1, 50])
     # plt.savefig('WinePlots/winemaxdepthEntropy.png')
     # plt.close()
     #
-    # max_depths = np.arange(1, 50, 1)
+    # # DT Random Search & Learning Curve
+    # max_depths = np.arange(1, 20, 1)
     # params = {'criterion': ['gini', 'entropy'], 'max_depth': max_depths}
     # learner = DecisionTreeClassifier(random_state=seed)
     #
-    # dt_cv = GridSearchCV(learner, n_jobs=1, param_grid=params, refit=True, cv=5)
+    # dt_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
     # dt_cv.fit(training_x, training_y)
     # print(dt_cv.score(testing_x, testing_y))
     # print(dt_cv.best_params_) #entropy, max depth 11
+    # #start timer
     # test_y_predicted = dt_cv.predict(testing_x)
+    # #end timer
     # y_true = pd.Series(testing_y)
     # y_pred = pd.Series(test_y_predicted)
     # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
     #
-    # final_dt = DecisionTreeClassifier(criterion='entropy',max_depth=11, random_state=seed)
+    # #final_dt = DecisionTreeClassifier(criterion='entropy',max_depth=11, random_state=seed)
     # train_sizes, train_scores, test_scores = learning_curve(
-    #     final_dt,
+    #     dt_cv,
     #     training_x,
     #     training_y, n_jobs=-1,
     #     cv=10,
     #     train_sizes=np.linspace(.1, 1.0, 10),
     #     random_state=seed)
     #
-    # plot_learning_curve(train_scores, test_scores, train_sizes, 'wineDTLearningCurve.png')
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineDTLearningCurve.png')
 
-    # Adaboost Max Depth
-
+    # # Adaboost Max Depth
+    #
     # max_depth_array = []
     # training_depth_array = []
     # testing_depth_array = []
@@ -124,10 +155,10 @@ def main():
     #
     #     boosted_learner2.fit(training_x, training_y)
     #     training_depth_array.append(boosted_learner2.score(training_x, training_y))
-    #     testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
+    #     #testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
     #
     # plt.plot(max_depth_array, training_depth_array, label='Training')
-    # plt.plot(max_depth_array, testing_depth_array, label='Testing')
+    # #plt.plot(max_depth_array, testing_depth_array, label='Testing')
     # plt.plot(max_depth_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
     # plt.title("Accuracy vs Max Depth")
@@ -136,9 +167,9 @@ def main():
     # plt.xlim([1, 50])
     # plt.savefig('WinePlots/wineboostedmaxdepth.png')
     # plt.close()
-
-    # Adaboost Estimators
-
+    #
+    # # Adaboost Estimators
+    #
     # estimator_array = []
     # training_depth_array = []
     # testing_depth_array = []
@@ -153,10 +184,10 @@ def main():
     #
     #     boosted_learner2.fit(training_x, training_y)
     #     training_depth_array.append(boosted_learner2.score(training_x, training_y))
-    #     testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
+    #     #testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
     #
     # plt.plot(estimator_array, training_depth_array, label='Training')
-    # plt.plot(estimator_array, testing_depth_array, label='Testing')
+    # #plt.plot(estimator_array, testing_depth_array, label='Testing')
     # plt.plot(estimator_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
     # plt.title("Accuracy vs Estimator Count")
@@ -165,9 +196,9 @@ def main():
     # plt.xlim([1, 50])
     # plt.savefig('WinePlots/wineboostedestimators.png')
     # plt.close()
-
-    # Adaboost Learning Rate
-
+    #
+    # # Adaboost Learning Rate
+    #
     # learning_rate_array = []
     # training_depth_array = []
     # testing_depth_array = []
@@ -182,10 +213,10 @@ def main():
     #
     #     boosted_learner2.fit(training_x, training_y)
     #     training_depth_array.append(boosted_learner2.score(training_x, training_y))
-    #     testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
+    #     #testing_depth_array.append(boosted_learner2.score(testing_x, testing_y))
     #
     # plt.plot(learning_rate_array, training_depth_array, label='Training')
-    # plt.plot(learning_rate_array, testing_depth_array, label='Testing')
+    # #plt.plot(learning_rate_array, testing_depth_array, label='Testing')
     # plt.plot(learning_rate_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
     # plt.title("Accuracy vs Learning Rates")
@@ -194,42 +225,43 @@ def main():
     # plt.xlim([0, 1])
     # plt.savefig('WinePlots/wineboostedLearningRate.png')
     # plt.close()
-
-    # max_depths = np.arange(1, 50, 1)
-    # #params = {'criterion': ['gini', 'entropy'], 'max_depth': max_depths}
+    #
+    # # Adaboost Random Search & Learning Curve
+    #
+    # max_depths = np.arange(1, 20, 1)
     # params = {'n_estimators': [1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 40, 50], 'learning_rate': [0.01, 0.02, 0.04, 0.08, 0.16, 0.32, 0.64, 1], 'base_estimator__max_depth': max_depths}
-    # learner = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy'),random_state=seed)
+    # learner = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='gini'),random_state=seed)
     #
     # print('starting grid  search')
-    # boost_cv = GridSearchCV(learner, n_jobs=1, param_grid=params, refit=True, cv=5, verbose=1)
+    # boost_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
     # boost_cv.fit(training_x, training_y)
     # print(boost_cv.score(testing_x, testing_y))
-    # print(boost_cv.best_params_)
+    # print(boost_cv.best_params_) #{'n_estimators': 5, 'learning_rate': 0.64, 'base_estimator__max_depth': 9}
     # test_y_predicted = boost_cv.predict(testing_x)
     # y_true = pd.Series(testing_y)
     # y_pred = pd.Series(test_y_predicted)
     # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
-
-    # final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
+    #
+    # #final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
     # train_sizes, train_scores, test_scores = learning_curve(
-    #     final_dt,
+    #     boost_cv,
     #     training_x,
     #     training_y, n_jobs=-1,
     #     cv=10,
     #     train_sizes=np.linspace(.1, 1.0, 10),
     #     random_state=seed)
     #
-    # plot_learning_curve(train_scores, test_scores, train_sizes, 'wineDTLearningCurve.png')
-
-    # KNN Number of Neighbors
-
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineboostedLearningCurve.png')
+    #
+    # # KNN Number of Neighbors
+    #
     # knn_array = []
     # training_depth_array = []
     # testing_depth_array = []
     # cross_val_score_array = []
     #
     # print('KNN Number of Neighbors')
-    # for i in range(1, 50, 3):
+    # for i in range(1, 50, 2):
     #     knn_array.append(i)
     #     learner = KNeighborsClassifier(n_neighbors=i)
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
@@ -249,8 +281,8 @@ def main():
     # plt.savefig('WinePlots/wineKNN.png')
     # plt.close()
     #
-    # KNN Weight
-
+    # # KNN Weight
+    #
     # knn_array = []
     # training_depth_array = []
     # testing_depth_array = []
@@ -306,6 +338,32 @@ def main():
     # print('Testing Accuracy: ' + str(testing_depth_array[1]))
     # print('Cross Validation Accuracy: ' + str(cross_val_score_array[1]))
     # print('--------------------------')
+    #
+    # max_depths = np.arange(1, 50, 1)
+    # params = {'p': [1, 2],
+    #           'weights': ['uniform','distance'], 'n_neighbors': np.arange(1, 50, 2)}
+    # learner = KNeighborsClassifier()
+    #
+    # print('starting grid  search')
+    # knn_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=30)
+    # knn_cv.fit(training_x, training_y)
+    # print(knn_cv.score(testing_x, testing_y))
+    # print(knn_cv.best_params_)  # {'weights': 'uniform', 'p': 2, 'n_neighbors': 1}
+    # test_y_predicted = knn_cv.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # # final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     knn_cv,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=10,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineKNNLearningCurve.png')
 
     # ANN 1 Layer with different number of neurons
 
@@ -328,9 +386,9 @@ def main():
     # plt.plot(ann_array, testing_depth_array, label='Testing')
     # plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs K Neighbors")
+    # plt.title("Accuracy vs Number of Neurons in One Hidden Layer")
     # plt.ylabel('Accuracy %')
-    # plt.xlabel('K Neighbors')
+    # plt.xlabel('Number of Neurons')
     # plt.xlim([1, 50])
     # plt.savefig('WinePlots/wineANNNeurons.png')
     # plt.close()
@@ -342,7 +400,7 @@ def main():
     # testing_depth_array = []
     # cross_val_score_array = []
     #
-    # print('ANN Number of Neurons')
+    # print('ANN Number of Layers')
     # for i in [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 49]:
     #     print('------hey we are on ' + str(i))
     #     hidden_layers = []
@@ -359,12 +417,38 @@ def main():
     # plt.plot(ann_array, testing_depth_array, label='Testing')
     # plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
-    # plt.title("Accuracy vs K Neighbors")
+    # plt.title("Accuracy vs Number of Hidden Layers")
     # plt.ylabel('Accuracy %')
-    # plt.xlabel('K Neighbors')
+    # plt.xlabel('Number of Hidden Layers')
     # plt.xlim([1, 50])
     # plt.savefig('WinePlots/wineANNLayers.png')
     # plt.close()
+
+    # max_depths = np.arange(1, 50, 1)
+    # params = {'hidden_layer_sizes': [(16,16), (8,8), (16,), (8,)],
+    #           'alpha': np.arange(0.0, 10.0, 0.5), 'activation': ['relu', 'logistic']}
+    # learner = MLPClassifier()
+    #
+    # print('starting grid  search')
+    # ann_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    # ann_cv.fit(training_x, training_y)
+    # print(ann_cv.score(testing_x, testing_y))
+    # print(ann_cv.best_params_)  # {'hidden_layer_sizes': (16, 16), 'alpha': 0.5, 'activation': 'relu'}
+    # test_y_predicted = ann_cv.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # # final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     ann_cv,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=2,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineANNLearningCurve.png')
 
     # SVM Kernels Sigmoid vs RBF
 
@@ -394,6 +478,31 @@ def main():
     # print('Testing Accuracy: ' + str(testing_depth_array[1]))
     # print('Cross Validation Accuracy: ' + str(cross_val_score_array[1]))
     # print('--------------------------')
+
+    # params = {'kernel': ['sigmoid', 'rbf'],
+    #           'gamma': ['auto', 'scale']}
+    # learner = svm.SVC()
+    #
+    # print('starting grid  search')
+    # svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    # svc_cv.fit(training_x, training_y)
+    # print(svc_cv.score(testing_x, testing_y))
+    # print(svc_cv.best_params_)  # {'hidden_layer_sizes': (16, 16), 'alpha': 0.5, 'activation': 'relu'}
+    # test_y_predicted = svc_cv.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # # final_boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(criterion='entropy', max_depth=11))
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     svc_cv,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=10,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurve.png')
 
 
 def plot_learning_curve(train_scores, test_scores, train_sizes, file_name):
