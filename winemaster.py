@@ -551,31 +551,31 @@ def main():
 
     # SVM over Epochs
 
-    svm_array = []
-    training_depth_array = []
-    testing_depth_array = []
-    cross_val_score_array = []
-
-    print('ANN Different Epochs')
-    for i in [200, 400, 600, 800, 1000, 1500, 2000]:
-        print('------hey we are on ' + str(i))
-        svm_array.append(i)
-        learner = svm.SVC(kernel='rbf', gamma=0.91, max_iter=i)
-        cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
-        learner.fit(training_x, training_y)
-        training_depth_array.append(learner.score(training_x, training_y))
-        #testing_depth_array.append(learner.score(testing_x, testing_y))
-
-    plt.plot(svm_array, training_depth_array, label='Training')
-    #plt.plot(ann_array, testing_depth_array, label='Testing')
-    plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
-    plt.legend(loc=4, fontsize=8)
-    plt.title("Cross Validation Score vs. Max Iterations")
-    plt.ylabel('Score')
-    plt.xlabel('Max Number of Iterations')
-    plt.xlim([0, 2000])
-    plt.savefig('WinePlots/wineSVMMaxIterations.png')
-    plt.close()
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('ANN Different Epochs')
+    # for i in [200, 400, 600, 800, 1000, 1500, 2000]:
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='rbf', gamma=0.91, max_iter=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
+    #
+    # plt.plot(svm_array, training_depth_array, label='Training')
+    # #plt.plot(ann_array, testing_depth_array, label='Testing')
+    # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs. Max Iterations")
+    # plt.ylabel('Score')
+    # plt.xlabel('Max Number of Iterations')
+    # plt.xlim([0, 2000])
+    # plt.savefig('WinePlots/wineSVMMaxIterations.png')
+    # plt.close()
 
 
 def plot_learning_curve(train_scores, test_scores, train_sizes, file_name):
