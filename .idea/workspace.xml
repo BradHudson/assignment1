@@ -3,10 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="014216b4-2ce9-41f7-b963-ce1dc973840b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLayers.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLayers.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNNeurons.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNNeurons.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsSVCLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsSVCLearningCurve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsDTLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsDTLearningCurve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsKNNLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsKNNLearningCurve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedLearningRate.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedLearningRate.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedestimators.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedestimators.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedlearningcurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedlearningcurve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedmaxdepth.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedmaxdepth.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthEntropy.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthEntropy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthGini.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthGini.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineANNLayers.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineANNLayers.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineANNLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineANNLearningCurve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineANNNeurons.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineANNNeurons.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineDTLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineDTLearningCurve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineKNNLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineKNNLearningCurve.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WinePlots/wineMaxIterations.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineMaxIterations.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineboostedLearningRate.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineboostedLearningRate.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineboostedestimators.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineboostedestimators.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineboostedlearningcurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineboostedlearningcurve.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineboostedmaxdepth.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineboostedmaxdepth.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/winemaxdepthEntropy.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/winemaxdepthEntropy.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/winemaxdepthGini.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/winemaxdepthGini.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pendigitsmaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitsmaster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winemaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/winemaster.py" afterDir="false" />
     </list>
@@ -19,42 +35,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pendigitsmaster.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="67" column="16" selection-start-line="66" selection-start-column="7" selection-end-line="73" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVMMaxIterations.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLearningCurve.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNNeurons.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLayers.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/winemaster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6870">
-              <caret line="473" column="4" selection-start-line="473" selection-start-column="4" selection-end-line="577" selection-end-column="17" />
+            <state relative-caret-position="656">
+              <caret line="340" column="50" selection-start-line="340" selection-start-column="50" selection-end-line="340" selection-end-column="50" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -63,17 +47,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WinePlots/wineSVMMaxIterations.png">
+        <entry file="file://$PROJECT_DIR$/WinePlots/wineANNLayers.png">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WinePlots/wineSVCLearningCurve.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WinePlots/wineMaxIterations.png">
+        <entry file="file://$PROJECT_DIR$/WinePlots/wineANNNeurons.png">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
@@ -88,36 +67,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>conf</find>
-      <find>refit</find>
-      <find>cv</find>
-      <find>cross_val</find>
-      <find>40</find>
-      <find>?</find>
-      <find>base_estimator</find>
-      <find>learner</find>
-      <find>param_name</find>
-      <find>scoring</find>
-      <find>max_depth</find>
-      <find>indeksDaarlig</find>
+      <find>grid</find>
+      <find>gridse</find>
+      <find>loss_c</find>
+      <find>early_stop</find>
+      <find>curve</find>
+      <find>validation_s</find>
+      <find>loss</find>
+      <find>validation</find>
+      <find>validation_scores_</find>
+      <find>validation_sc</find>
+      <find>Validation score</find>
+      <find>validation_score</find>
+      <find>_update_no_improvement_count</find>
+      <find>increment</find>
+      <find>warm_sta</find>
+      <find>validation_sco</find>
+      <find>increme</find>
+      <find>_fit_stochastic</find>
+      <find>loss_curve</find>
+      <find>partial_</find>
+      <find>cross_val_score</find>
+      <find>random</find>
+      <find>KNeigh</find>
+      <find>Kneig</find>
       <find>rand</find>
-      <find>eucl</find>
-      <find>learning_rate</find>
-      <find>max_depths</find>
-      <find>class_weight</find>
-      <find>entropy</find>
-      <find>max_</find>
-      <find>weights</find>
-      <find>metric</find>
-      <find>verbose</find>
-      <find>savefig('</find>
-      <find>pendigitsmax</find>
-      <find>pendigitslea</find>
-      <find>pendigits</find>
-      <find>split</find>
-      <find>PenDigits</find>
-      <find>K.</find>
-      <find>hist</find>
+      <find>partial_f</find>
+      <find>partial_fit</find>
+      <find>_check_partial_fit_first_call</find>
+      <find>incremental</find>
+      <find>random_state</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -154,16 +133,16 @@
         <option value="$PROJECT_DIR$/Dataset/adult-test.csv" />
         <option value="$PROJECT_DIR$/adultmaster.py" />
         <option value="$PROJECT_DIR$/Dataset/adult-training.csv" />
-        <option value="$PROJECT_DIR$/winemaster.py" />
         <option value="$PROJECT_DIR$/pendigitsmaster.py" />
+        <option value="$PROJECT_DIR$/winemaster.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3450" />
+    <option name="x" value="3452" />
     <option name="y" value="23" />
     <option name="width" value="1666" />
-    <option name="height" value="1027" />
+    <option name="height" value="1417" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -184,7 +163,7 @@
             <path>
               <item name="7641" type="b2602c69:ProjectViewProjectNode" />
               <item name="7641" type="462c0819:PsiDirectoryNode" />
-              <item name="PenDigitsPlots" type="462c0819:PsiDirectoryNode" />
+              <item name="WinePlots" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -219,7 +198,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pendigitsmaster">
+  <component name="RunManager" selected="Python.winemaster">
     <configuration name="adultmaster" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="7641" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -327,8 +306,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pendigitsmaster" />
         <item itemvalue="Python.winemaster" />
+        <item itemvalue="Python.pendigitsmaster" />
         <item itemvalue="Python.adultmaster" />
         <item itemvalue="Python.pendigits_dt" />
         <item itemvalue="Python.wine_boost" />
@@ -357,16 +336,16 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="3450" y="23" width="1666" height="1027" extended-state="0" />
+    <frame x="3452" y="23" width="1666" height="1417" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22613981" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18905775" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23101604" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.32603773" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19924529" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.17962264" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -392,178 +371,75 @@
           <line>1492</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file:///usr/local/lib/python3.7/site-packages/sklearn/neural_network/multilayer_perceptron.py</url>
+          <line>343</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file:///usr/local/lib/python3.7/site-packages/sklearn/neural_network/multilayer_perceptron.py</url>
+          <line>471</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/winemaster.py</url>
+          <line>112</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>[(h,)*l for l in [1,2,3] for h in [X.shape[1],X.shape[1]//2,X.shape[1]*2]]</expression-string>
+        <expression-string>dt_cv.best_estimator_</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>[(h,)*l for l in [1,2,3] for h in [X.shape[1],X.shape[1]//2,*2]]</expression-string>
+        <expression-string>dt_cv.best_params_</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>X.shape[1]</expression-string>
+        <expression-string>dt_cv</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>hiddens_adult = [(h,)*l for l in [1,2,3] for h in [d,d//2,d*2]]</expression-string>
+        <expression-string>np.logspace(-6, -1, 5)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>d = X.shape[1]</expression-string>
+        <expression-string>learner.validation_scores_</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>dict(zip(unique, counts))</expression-string>
+        <expression-string>learner.score(training_x, training_y)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>unique, counts = np.unique(np.array(df.iloc[:, -1]), return_counts=True)</expression-string>
+        <expression-string>learner</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>unique, counts = np.unique(np.array(df.iloc[:, -1], return_counts=True)</expression-string>
+        <expression-string>MLPClassifier.best_validation_score_</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>unique, counts = np.unique(Y, return_counts=True)</expression-string>
+        <expression-string>MLPClassifier.early_stopping</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/AdultPlots/AdultmaxdepthGini.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/AdultPlots/AdultmaxdepthEntropy.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/adultmaster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="71" selection-start-line="24" selection-start-column="71" selection-end-line="24" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_split.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="2011" column="38" lean-forward="true" selection-start-line="2011" selection-start-column="38" selection-end-line="2011" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/winemaxdepthEntropy.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/winemaxdepthGini.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineDTLearningCurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineKNNLearningCurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineKNN.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedestimators.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedmaxdepth.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedLearningRate.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/winequality-white.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/pendigits.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsClassDistribution.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/seaborn/distributions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-280">
-          <caret line="74" column="29" lean-forward="true" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/winedata.csv">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="392">
-          <caret line="5500" column="49" lean-forward="true" selection-start-line="5500" selection-start-column="49" selection-end-line="5500" selection-end-column="49" />
-        </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WinePlots/wineClassDistributionOriginal.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineClassDistribution.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsDTLearningCurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedlearningcurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthGini.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/ensemble/weight_boosting.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="386" column="8" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedLearningCurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedLearningRate.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedestimators.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthEntropy.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsKNNLearningCurve.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsUniformKNN.png">
@@ -572,38 +448,8 @@
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsDistanceKNN.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/neighbors/classification.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="553">
-          <caret line="59" column="66" lean-forward="true" selection-start-line="59" selection-start-column="66" selection-end-line="59" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsKNN.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/neural_network/multilayer_perceptron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-130">
-          <caret line="892" column="8" selection-start-line="892" selection-start-column="8" selection-end-line="892" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineANNNeurons.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineANNLearningCurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineANNLayers.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_search.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4007">
-          <caret line="1450" column="8" selection-start-line="1450" selection-start-column="8" selection-end-line="1450" selection-end-column="8" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WinePlots/wineGammaSigmoid.png">
       <provider selected="true" editor-type-id="images" />
@@ -630,43 +476,175 @@
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLayers.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/winemaster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6870">
-          <caret line="473" column="4" selection-start-line="473" selection-start-column="4" selection-end-line="577" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WinePlots/wineSVMMaxIterations.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/WinePlots/wineSVCLearningCurve.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineMaxIterations.png">
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthEntropy.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_validation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="1125" column="4" selection-start-line="1125" selection-start-column="4" selection-end-line="1125" selection-end-column="4" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsmaxdepthGini.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineClassDistribution.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file:///usr/local/lib/python3.7/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="3059" column="4" selection-start-line="3059" selection-start-column="4" selection-end-line="3059" selection-end-column="4" />
+        <state relative-caret-position="-132">
+          <caret line="1474" column="4" selection-start-line="1474" selection-start-column="4" selection-end-line="1474" selection-end-column="4" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/winemaxdepthGini.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/winemaxdepthEntropy.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/ensemble/weight_boosting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="386" column="8" selection-start-line="386" selection-start-column="8" selection-end-line="386" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsDTLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedmaxdepth.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedestimators.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedLearningRate.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsboostedLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsManhattanKNN.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsKNNLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineKNNLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineManhattanKNN.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineEuclideanKNN.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dataset/winequality-white.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="-12" />
+      </provider>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pendigitsmaster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="67" column="16" selection-start-line="66" selection-start-column="7" selection-end-line="73" selection-end-column="17" />
+        <state relative-caret-position="296">
+          <caret line="148" column="37" lean-forward="true" selection-start-line="148" selection-start-column="37" selection-end-line="148" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsEuclideanKNN.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineMaxIterations.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitslearningKNNcurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_search.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="871" lean-forward="true" selection-start-line="871" selection-end-line="871" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineANNLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/neural_network/_stochastic_optimizers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="247" column="78" lean-forward="true" selection-start-line="247" selection-start-column="78" selection-end-line="247" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_validation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="348" column="74" selection-start-line="348" selection-start-column="74" selection-end-line="348" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedlearningcurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineDTLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedLearningRate.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineANNLayers100.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/tree/tree.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="977" column="34" selection-start-line="977" selection-start-column="34" selection-end-line="977" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/neighbors/classification.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="206" column="26" selection-start-line="206" selection-start-column="26" selection-end-line="206" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedmaxdepth.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/utils/multiclass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="292" column="33" selection-start-line="292" selection-start-column="4" selection-end-line="292" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineANNLayers.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineANNNeurons.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/neural_network/multilayer_perceptron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="1160" column="16" selection-start-line="1160" selection-start-column="4" selection-end-line="1160" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winemaster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="340" column="50" selection-start-line="340" selection-start-column="50" selection-end-line="340" selection-end-column="50" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
