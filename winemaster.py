@@ -12,6 +12,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import GridSearchCV
 from sklearn import svm
 from sklearn.model_selection import validation_curve
 import time
@@ -314,7 +315,7 @@ def main():
     #                                             'WinePlots/wineANNNeurons.png')
 
     # # ANN Neurons per Layers
-    #
+
     # ann_array = []
     # training_depth_array = []
     # testing_depth_array = []
@@ -327,7 +328,7 @@ def main():
     #     for x in range(i):
     #         hidden_layers.append(22)
     #     ann_array.append(i)
-    #     learner = MLPClassifier(hidden_layer_sizes=(hidden_layers))
+    #     learner = MLPClassifier(hidden_layer_sizes=(hidden_layers), activation='relu', alpha=0.0051)
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
@@ -338,56 +339,70 @@ def main():
 
     # ANN Learning Curve
 
-    params = {'hidden_layer_sizes': [(11,11), (5,5), (11,), (5,), (22,), (22, 22), (5, 5, 5), (11, 11, 11), (22, 22, 22)], 'alpha': np.arange(0.0001, 0.01, 0.005), 'activation': ['relu', 'logistic']}
-    learner = MLPClassifier(max_iter=3000, random_state=seed)
-    # best params {'hidden_layer_sizes': (22, 22, 22), 'alpha': 0.0051, 'activation': 'relu'}
-    #ann_cv = MLPClassifier(max_iter=3000,hidden_layer_sizes=(22,22,22), alpha=0.0051, activation='relu', random_state=seed)
-    print('starting random  search')
-    ann_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
-    start = time.clock()
-    ann_cv.fit(training_x, training_y)
-    dt_train_time = time.clock() - start
-    print('Time to Train: ' + str(dt_train_time))
-    print('Training Accuracy: ' + str(ann_cv.score(training_x, training_y)))
-    print('Testing Accuracy: ' + str(ann_cv.score(testing_x, testing_y)))
-    print(ann_cv.best_params_)
-    start = time.clock()
-    test_y_predicted = ann_cv.predict(testing_x)
-    dt_query_time = time.clock() - start
-    print('Time to Query: ' + str(dt_query_time))
-    y_true = pd.Series(testing_y)
-    y_pred = pd.Series(test_y_predicted)
-    print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
-
-    train_sizes, train_scores, test_scores = learning_curve(
-        ann_cv,
-        training_x,
-        training_y, n_jobs=-1,
-        cv=10,
-        train_sizes=np.linspace(.1, 1.0, 10),
-        random_state=seed)
-
-    plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineANNLearningCurve.png')
-
-    # ANN over Epochs
+    # params = {'hidden_layer_sizes': [(11,11), (5,5), (11,), (5,), (22,), (22, 22), (5, 5, 5), (11, 11, 11), (22, 22, 22)], 'alpha': np.arange(0.0001, 0.01, 0.005), 'activation': ['relu', 'logistic']}
+    # learner = MLPClassifier(max_iter=500, random_state=seed)
+    # ##### best params {'hidden_layer_sizes': (11,11), 'alpha': 0.0001, 'activation': 'relu'}
+    # # ann_cv = MLPClassifier(max_iter=3000,hidden_layer_sizes=(22,22,22), alpha=0.0051, activation='relu', random_state=seed)
+    # print('starting random  search')
+    # ann_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=20, verbose=1000)
+    # ann_cv.fit(training_x, training_y)
+    # print(ann_cv.best_params_)
     #
+    # final_ann = MLPClassifier(**ann_cv.best_params_)
+    #
+    # start = time.clock()
+    # final_ann.fit(training_x, training_y)
+    #
+    # dt_train_time = time.clock() - start
+    # # print('refit time: ' + str(final_ann.refit_time_))
+    # # print(final_ann.best_params_)
+    # print('Time to Train: ' + str(dt_train_time))
+    # print('Training Accuracy: ' + str(final_ann.score(training_x, training_y)))
+    # print('Testing Accuracy: ' + str(final_ann.score(testing_x, testing_y)))
+    # # print(final_ann.best_params_)
+    # start = time.clock()
+    # test_y_predicted = final_ann.predict(testing_x)
+    # dt_query_time = time.clock() - start
+    # print('Time to Query: ' + str(dt_query_time))
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     final_ann,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=5,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineANNLearningCurve.png')
+
+
+    #ANN over epochs
+
     # ann_array = []
     # training_depth_array = []
-    # testing_depth_array = []
     # cross_val_score_array = []
+    # testing_depth_array = []
     #
-    # print('ANN Different Epochs')
-    # for i in [200, 400, 600, 800, 1000, 1500, 2000, 2200, 2400, 2600, 2800,3000]:
-    #     print('------hey we are on ' + str(i))
+    # learner = MLPClassifier(hidden_layer_sizes=(22,), alpha=0.0051, activation='relu', max_iter=1,
+    #                         random_state=seed, verbose=10, warm_start=True)
+    # for i in np.arange(3000):
     #     ann_array.append(i)
-    #     learner = MLPClassifier(hidden_layer_sizes=(22,22,22), alpha=0.0001, activation='relu', max_iter=1000, random_state=seed, early_stopping=False, verbose=10)
-    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
-    #     learner.fit(training_x, training_y)
-    #     training_depth_array.append(learner.score(training_x, training_y))
+    #     learner = learner.fit(training_x,training_y)
+    #     score = learner.score(training_x, training_y)
+    #     print(score)
+    #     training_depth_array.append(score)
+    #     cross_score = learner.score(testing_x, testing_y)
+    #     cross_val_score_array.append(cross_score)
+    #     print(cross_score)
+    #
+    #
     #
     # plot_validation_curve(ann_array, training_depth_array, cross_val_score_array,
-    #                       "Cross Validation Score vs. Max Iterations", 'Score', 'Max Number of Iterations', [0, 3000],
-    #                       'WinePlots/wineMaxIterations.png')
+    #                       "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 3000],
+    #                       'WinePlots/wineANNEpochs.png')
 
     # SVM Kernels Sigmoid vs RBF
 
@@ -397,108 +412,192 @@ def main():
     # cross_val_score_array = []
     #
     # print('SVM Kernels Sigmoid Different Gamma Values')
-    # for i in np.arange(0.01, 1, 0.1):
+    # for i in np.arange(0.01, 2, 0.1):
     #     print('------hey we are on ' + str(i))
     #     svm_array.append(i)
     #     learner = svm.SVC(kernel='sigmoid', gamma=i)
     #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(svm_array, training_depth_array, label='Training')
-    # #plt.plot(ann_array, testing_depth_array, label='Testing')
     # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
     # plt.title("Cross Validation Score vs. Gamma Values - Sigmoid Kernel")
     # plt.ylabel('Score')
     # plt.xlabel('Gamma Values')
-    # plt.xlim([0.00, 1.0])
+    # plt.xlim([0.00, 2.0])
     # plt.savefig('WinePlots/wineGammaSigmoid.png')
     # plt.close()
-    #
+
     # svm_array = []
     # training_depth_array = []
     # testing_depth_array = []
     # cross_val_score_array = []
     #
     # print('SVM Kernels RBF Different Gamma Values')
-    # for i in np.arange(0.01, 1, 0.1):
+    # for i in np.arange(0.01, 2, 0.1):
     #     print('------hey we are on ' + str(i))
     #     svm_array.append(i)
     #     learner = svm.SVC(kernel='rbf', gamma=i)
-    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     cross_score = cross_val_score(learner, training_x, training_y, cv=10).mean()
+    #     print(cross_score)
+    #     cross_val_score_array.append(cross_score)
     #     learner.fit(training_x, training_y)
     #     training_depth_array.append(learner.score(training_x, training_y))
-    #     # testing_depth_array.append(learner.score(testing_x, testing_y))
     #
     # plt.plot(svm_array, training_depth_array, label='Training')
-    # # plt.plot(ann_array, testing_depth_array, label='Testing')
     # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
     # plt.legend(loc=4, fontsize=8)
     # plt.title("Cross Validation Score vs. Gamma Values - RBF Kernel")
     # plt.ylabel('Score')
     # plt.xlabel('Gamma Values')
-    # plt.xlim([0.00, 1.0])
+    # plt.xlim([0.00, 2.0])
     # plt.savefig('WinePlots/wineGammaRBF.png')
     # plt.close()
-    #
-    # params = {'kernel': ['sigmoid', 'rbf'],
-    #           'gamma': np.arange(0.01, 1, 0.1)}
-    # learner = svm.SVC()
-    #
-    # print('starting grid  search')
-    # svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
-    # svc_cv.fit(training_x, training_y)
-    # print(svc_cv.score(testing_x, testing_y))
-    # print(svc_cv.best_params_)
-    # test_y_predicted = svc_cv.predict(testing_x)
-    # y_true = pd.Series(testing_y)
-    # y_pred = pd.Series(test_y_predicted)
-    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
-    #
-    # train_sizes, train_scores, test_scores = learning_curve(
-    #     svc_cv,
-    #     training_x,
-    #     training_y, n_jobs=-1,
-    #     cv=10,
-    #     train_sizes=np.linspace(.1, 1.0, 10),
-    #     random_state=seed)
-    #
-    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurve.png')
 
-    # SVM over Epochs
+    # # SVM C Values
+    #
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Kernels Sigmoid Different C Values')
+    # for i in np.arange(0.01, 2, 0.1):
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='sigmoid', C=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. C Values - Sigmoid Kernel", 'Score', 'C Values', [0.00, 2.0],
+    #                       'WinePlots/wineCSigmoid.png')
+    #
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Kernels RBF Different C Values')
+    # for i in np.arange(0.01, 2, 0.1):
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='rbf', C=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. C Values - RBF Kernel", 'Score', 'C Values', [0.00, 2.0],
+    #                       'WinePlots/wineCRBF.png')
+
+    # #Learning Curve Sigmoid
+    #
+    params = {'gamma': np.arange(0.01, 2, 0.1), 'C':np.arange(0.01, 1, 0.1)}
+    learner = svm.SVC(kernel='sigmoid')
+
+    print('starting grid  search')
+    svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    svc_cv.fit(training_x, training_y)
+    best_params = svc_cv.best_params_ #{'gamma': 0.51, 'C': 0.01}
+    final_svc = svm.SVC(kernel='sigmoid', **best_params)
+    final_svc.fit(training_x, training_y)
+    print(final_svc.score(testing_x, testing_y))
+    print(final_svc.score(training_x, training_y))
+    test_y_predicted = final_svc.predict(testing_x)
+    y_true = pd.Series(testing_y)
+    y_pred = pd.Series(test_y_predicted)
+    print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+
+    train_sizes, train_scores, test_scores = learning_curve(
+        final_svc,
+        training_x,
+        training_y, n_jobs=-1,
+        cv=10,
+        train_sizes=np.linspace(.1, 1.0, 10),
+        random_state=seed)
+
+    plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurveSigmoid.png')
+
+    # Learning Curve RBF
+
+    params = {'gamma': np.arange(0.01, 2, 0.1), 'C':np.arange(0.01, 1, 0.1)}
+    learner = svm.SVC(kernel='rbf')
+
+    print('starting grid  search')
+    svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    svc_cv.fit(training_x, training_y)
+    best_params = svc_cv.best_params_ #{'gamma': 1.31, 'C': 0.91}
+    final_svc = svm.SVC(kernel='rbf', **best_params)
+    final_svc.fit(training_x, training_y)
+    print(final_svc.score(testing_x, testing_y))
+    print(final_svc.score(training_x, training_y))
+    test_y_predicted = final_svc.predict(testing_x)
+    y_true = pd.Series(testing_y)
+    y_pred = pd.Series(test_y_predicted)
+    print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+
+    train_sizes, train_scores, test_scores = learning_curve(
+        final_svc,
+        training_x,
+        training_y, n_jobs=-1,
+        cv=10,
+        train_sizes=np.linspace(.1, 1.0, 10),
+        random_state=seed)
+
+    plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurveRBF.png')
+
+    # SVM over Epochs Sigmoid
 
     # svm_array = []
     # training_depth_array = []
     # testing_depth_array = []
     # cross_val_score_array = []
     #
-    # print('ANN Different Epochs')
-    # for i in [200, 400, 600, 800, 1000, 1500, 2000]:
-    #     print('------hey we are on ' + str(i))
+    # print('SVM Different Epochs Sigmoid')
+    # for i in np.arange(1000):
     #     svm_array.append(i)
-    #     learner = svm.SVC(kernel='rbf', gamma=0.91, max_iter=i)
-    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
-    #     learner.fit(training_x, training_y)
-    #     training_depth_array.append(learner.score(training_x, training_y))
-    #     #testing_depth_array.append(learner.score(testing_x, testing_y))
+    #     learner = svm.SVC(kernel='sigmoid', verbose=100, max_iter=i)
+    #     learner = learner.fit(training_x,training_y)
+    #     score = learner.score(training_x, training_y)
+    #     print(score)
+    #     training_depth_array.append(score)
+    #     cross_score = learner.score(testing_x, testing_y)
+    #     cross_val_score_array.append(cross_score)
     #
-    # plt.plot(svm_array, training_depth_array, label='Training')
-    # #plt.plot(ann_array, testing_depth_array, label='Testing')
-    # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
-    # plt.legend(loc=4, fontsize=8)
-    # plt.title("Cross Validation Score vs. Max Iterations")
-    # plt.ylabel('Score')
-    # plt.xlabel('Max Number of Iterations')
-    # plt.xlim([0, 2000])
-    # plt.savefig('WinePlots/wineSVMMaxIterations.png')
-    # plt.close()
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
+    #                       'WinePlots/wineSVMEpochsSigmoid.png')
 
-def plot_validation_curve(param_array,training_array,cross_val_array,title,y, x, limit,file):
+    # # SVM over Epochs RBF
+    # svm_array = []
+    # training_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Different Epochs RBF')
+    # for i in np.arange(1000):
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='rbf', verbose=100, max_iter=i)
+    #     learner = learner.fit(training_x, training_y)
+    #     score = learner.score(training_x, training_y)
+    #     print(score)
+    #     training_depth_array.append(score)
+    #     cross_score = learner.score(testing_x, testing_y)
+    #     cross_val_score_array.append(cross_score)
+    #
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
+    #                       'WinePlots/wineSVMEpochsRBF.png')
+
+def plot_validation_curve(param_array,training_array,cross_val_array,title,y, x, limit,file, testing_depth_array = []):
     plt.plot(param_array, training_array, label='Training')
-    # plt.plot(max_depth_array, testing_depth_array, label='Testing')
-    plt.plot(param_array, cross_val_array, label='Cross Validation')
+    if len(testing_depth_array) > 0:
+        plt.plot(param_array, testing_depth_array, label='Testing')
+    if len(cross_val_array) > 0:
+        plt.plot(param_array, cross_val_array, label='Cross Validation')
     plt.legend(loc=4, fontsize=8)
     plt.title(title, fontdict={'size': 16})
     plt.ylabel(y)

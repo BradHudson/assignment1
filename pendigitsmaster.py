@@ -286,111 +286,111 @@ def main():
     # plot_learning_curve(train_scores, test_scores, train_sizes, 'PenDigitsPlots/pendigitsKNNLearningCurve.png', "Learning Curve kNN")
 
     # ANN 1 Layer with different number of neurons
-
-    ann_array = []
-    training_depth_array = []
-    testing_depth_array = []
-    cross_val_score_array = []
-
-    print('ANN Number of Neurons')
-    for i in [0,1,5,10,15,20,25,30,35,40,45,49]:
-        print('------hey we are on ' + str(i))
-        ann_array.append(i)
-        learner = MLPClassifier(hidden_layer_sizes=([i+1]))
-        cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
-        learner.fit(training_x, training_y)
-        training_depth_array.append(learner.score(training_x, training_y))
-
-    plot_validation_curve(ann_array, training_depth_array, cross_val_score_array,
-                          "Cross Validation Score vs Neurons in One Hidden Layer", 'Score', 'Number of Neurons', [1, 50],
-                          'PenDigitsPlots/pendigitsANNNeurons.png')
+    #
+    # ann_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('ANN Number of Neurons')
+    # for i in [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 100]:
+    #     print('------hey we are on ' + str(i))
+    #     ann_array.append(i)
+    #     learner = MLPClassifier(hidden_layer_sizes=([i+1]), activation='relu', alpha=0.0041, verbose=100)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=5).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plot_validation_curve(ann_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs Neurons in One Hidden Layer", 'Score', 'Number of Neurons', [1, 100],
+    #                       'PenDigitsPlots/pendigitsANNNeurons.png')
 
     # ANN Neurons per Layers
 
-    ann_array = []
-    training_depth_array = []
-    testing_depth_array = []
-    cross_val_score_array = []
+    # ann_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('ANN Number of Layers')
+    # for i in [1, 3, 5, 8, 10, 11, 13, 15, 17, 20, 23, 25]:
+    #     print('------hey we are on ' + str(i))
+    #     hidden_layers = []
+    #     for x in range(i):
+    #         hidden_layers.append(16)
+    #     ann_array.append(i)
+    #     learner = MLPClassifier(hidden_layer_sizes=(hidden_layers), activation='relu',alpha=0.0041)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plt.plot(ann_array, training_depth_array, label='Training')
+    # #plt.plot(ann_array, testing_depth_array, label='Testing')
+    # plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Accuracy vs Number of Hidden Layers")
+    # plt.ylabel('Accuracy %')
+    # plt.xlabel('Number of Hidden Layers')
+    # plt.xlim([1, 50])
+    # plt.savefig('PenDigitsPlots/pendigitsANNLayers.png')
+    # plt.close()
+    #
+    # plot_validation_curve(ann_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs # of Hidden Layers", 'Score', 'Number of Hidden Layers', [1, 25],
+    #                       'PenDigitsPlots/pendigitsANNLayers.png')
 
-    print('ANN Number of Layers')
-    for i in [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 49]:
-        print('------hey we are on ' + str(i))
-        hidden_layers = []
-        for x in range(i):
-            hidden_layers.append(10)
-        ann_array.append(i)
-        learner = MLPClassifier(hidden_layer_sizes=(hidden_layers))
-        cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
-        learner.fit(training_x, training_y)
-        training_depth_array.append(learner.score(training_x, training_y))
-        #testing_depth_array.append(learner.score(testing_x, testing_y))
 
-    plt.plot(ann_array, training_depth_array, label='Training')
-    #plt.plot(ann_array, testing_depth_array, label='Testing')
-    plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
-    plt.legend(loc=4, fontsize=8)
-    plt.title("Accuracy vs Number of Hidden Layers")
-    plt.ylabel('Accuracy %')
-    plt.xlabel('Number of Hidden Layers')
-    plt.xlim([1, 50])
-    plt.savefig('PenDigitsPlots/pendigitsANNLayers.png')
-    plt.close()
+    # # ANN Learning Curve
+    #
+    # params = {'hidden_layer_sizes': [(16,16), (8,8), (16,), (8,)],
+    #           'alpha': np.arange(0.0001, .01, 0.0005), 'activation': ['relu', 'logistic']}
+    # learner = MLPClassifier(max_iter=500, random_state=seed)
+    #
+    # # print('starting random  search')
+    # # ann_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=20, verbose=1000)
+    # # ann_cv.fit(training_x, training_y)
+    # # print(ann_cv.best_params_)
+    # # final_ann = MLPClassifier(**ann_cv.best_params_)
+    # final_ann.fit(training_x, training_y)
+    # print('Training Accuracy: ' + str(final_ann.score(training_x, training_y)))
+    # print('Testing Accuracy: ' + str(final_ann.score(testing_x, testing_y)))
+    # test_y_predicted = final_ann.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     final_ann,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=2,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'PenDigitsPlots/pendigitsANNLearningCurve.png')
 
-    plot_validation_curve(ann_array, training_depth_array, cross_val_score_array,
-                          "Cross Validation Score vs # of Hidden Layers", 'Score', 'Number of Hidden Layers', [1, 50],
-                          'PenDigitsPlots/pendigitsANNLayers.png')
+    #ANN over epochs
 
-    params = {'hidden_layer_sizes': [(16,16), (8,8), (16,), (8,)],
-              'alpha': np.arange(0.0001, .01, 0.0005), 'activation': ['relu', 'logistic']}
-    learner = MLPClassifier()
-
-    print('starting grid  search')
-    ann_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
-    ann_cv.fit(training_x, training_y)
-    print(ann_cv.score(testing_x, testing_y))
-    print(ann_cv.best_params_)
-    test_y_predicted = ann_cv.predict(testing_x)
-    y_true = pd.Series(testing_y)
-    y_pred = pd.Series(test_y_predicted)
-    print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
-
-    train_sizes, train_scores, test_scores = learning_curve(
-        ann_cv,
-        training_x,
-        training_y, n_jobs=-1,
-        cv=2,
-        train_sizes=np.linspace(.1, 1.0, 10),
-        random_state=seed)
-
-    plot_learning_curve(train_scores, test_scores, train_sizes, 'PenDigitsPlots/pendigitsANNLearningCurve.png')
-
-    # ANN over max iterations
-
-    ann_array = []
-    training_depth_array = []
-    testing_depth_array = []
-    cross_val_score_array = []
-
-    print('ANN Different Epochs')
-    for i in [200, 400, 600, 800, 1000, 1500, 2000]:
-        print('------hey we are on ' + str(i))
-        ann_array.append(i)
-        learner = MLPClassifier(hidden_layer_sizes=(16,16), alpha=0.0041, activation='relu') # best params from previous random search
-        cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
-        learner.fit(training_x, training_y)
-        training_depth_array.append(learner.score(training_x, training_y))
-        #testing_depth_array.append(learner.score(testing_x, testing_y))
-
-    plt.plot(ann_array, training_depth_array, label='Training')
-    #plt.plot(ann_array, testing_depth_array, label='Testing')
-    plt.plot(ann_array, cross_val_score_array, label='Cross Validation')
-    plt.legend(loc=4, fontsize=8)
-    plt.title("Cross Validation Score vs. Max Iterations")
-    plt.ylabel('Score')
-    plt.xlabel('Max Number of Iterations')
-    plt.xlim([0, 2000])
-    plt.savefig('PenDigitsPlots/pendigitsANNMaxIterations.png')
-    plt.close()
+    # ann_array = []
+    # training_depth_array = []
+    # cross_val_score_array = []
+    # testing_depth_array = []
+    #
+    # learner = MLPClassifier(hidden_layer_sizes=(16,), alpha=0.0041, activation='relu', max_iter=1,
+    #                         random_state=seed, verbose=10, warm_start=True)
+    # for i in np.arange(3000):
+    #     ann_array.append(i)
+    #     learner = learner.fit(training_x,training_y)
+    #     score = learner.score(training_x, training_y)
+    #     print(score)
+    #     training_depth_array.append(score)
+    #     cross_score = learner.score(testing_x, testing_y)
+    #     cross_val_score_array.append(cross_score)
+    #     print(cross_score)
+    #
+    # plot_validation_curve(ann_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 3000],
+    #                       'PenDigitsPlots/pendigitsANNEpochs.png')
 
     # SVM Kernels Sigmoid vs RBF
 
@@ -551,6 +551,196 @@ def main():
     # plt.xlim([0, 400])
     # plt.savefig('PenDigitsPlots/pendigitsSVMMaxIterations.png')
     # plt.close()
+
+    # SVM Kernels Sigmoid vs RBF
+
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Kernels Sigmoid Different Gamma Values')
+    # for i in np.arange(0.01, 2, 0.1):
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='sigmoid', gamma=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plt.plot(svm_array, training_depth_array, label='Training')
+    # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs. Gamma Values - Sigmoid Kernel")
+    # plt.ylabel('Score')
+    # plt.xlabel('Gamma Values')
+    # plt.xlim([0.00, 2.0])
+    # plt.savefig('PenDigitsPlots/pendigitsGammaSigmoid.png')
+    # plt.close()
+    #
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Kernels RBF Different Gamma Values')
+    # for i in np.arange(0.01, 2, 0.1):
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='rbf', gamma=i)
+    #     cross_score = cross_val_score(learner, training_x, training_y, cv=10).mean()
+    #     print(cross_score)
+    #     cross_val_score_array.append(cross_score)
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plt.plot(svm_array, training_depth_array, label='Training')
+    # plt.plot(svm_array, cross_val_score_array, label='Cross Validation')
+    # plt.legend(loc=4, fontsize=8)
+    # plt.title("Cross Validation Score vs. Gamma Values - RBF Kernel")
+    # plt.ylabel('Score')
+    # plt.xlabel('Gamma Values')
+    # plt.xlim([0.00, 2.0])
+    # plt.savefig('PenDigitsPlots/pendigitsGammaRBF.png')
+    # plt.close()
+    #
+    # # SVM C Values
+    #
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Kernels Sigmoid Different C Values')
+    # for i in np.arange(0.01, 2, 0.1):
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='sigmoid', C=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. C Values - Sigmoid Kernel", 'Score', 'C Values', [0.00, 2.0],
+    #                       'PenDigitsPlots/pendigitsCSigmoid.png')
+    #
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Kernels RBF Different C Values')
+    # for i in np.arange(0.01, 2, 0.1):
+    #     print('------hey we are on ' + str(i))
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='rbf', C=i)
+    #     cross_val_score_array.append(cross_val_score(learner, training_x, training_y, cv=10).mean())
+    #     learner.fit(training_x, training_y)
+    #     training_depth_array.append(learner.score(training_x, training_y))
+    #
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. C Values - RBF Kernel", 'Score', 'C Values', [0.00, 2.0],
+    #                       'PenDigitsPlots/pendigitsCRBF.png')
+
+    #Learning Curve Sigmoid
+
+    # params = {'gamma': np.arange(0.01, 2, 0.1), 'C': np.arange(0.01, 1, 0.1)}
+    # learner = svm.SVC(kernel='sigmoid')
+    #
+    # print('starting grid  search')
+    # svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    # svc_cv.fit(training_x, training_y)
+    # best_params = svc_cv.best_params_  # {'gamma': 0.01, 'C': 0.51}
+    # print(best_params)
+    # final_svc = svm.SVC(kernel='sigmoid', **best_params)
+    # final_svc.fit(training_x, training_y)
+    # print(final_svc.score(testing_x, testing_y))
+    # print(final_svc.score(training_x, training_y))
+    # test_y_predicted = final_svc.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     final_svc,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=10,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'PenDigitsPlots/pendigitsSVCLearningCurveSigmoid.png')
+    #
+    # # Learning Curve RBF
+    #
+    # params = {'gamma': np.arange(0.01, 2, 0.1), 'C': np.arange(0.01, 1, 0.1)}
+    # learner = svm.SVC(kernel='rbf')
+    #
+    # print('starting grid  search')
+    # svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    # svc_cv.fit(training_x, training_y)
+    # best_params = svc_cv.best_params_  # {'gamma': 0.21000000000000002, 'C': 0.7100000000000001}
+    # print(best_params)
+    # final_svc = svm.SVC(kernel='rbf', **best_params)
+    # final_svc.fit(training_x, training_y)
+    # print(final_svc.score(testing_x, testing_y))
+    # print(final_svc.score(training_x, training_y))
+    # test_y_predicted = final_svc.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     final_svc,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=10,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'PenDigitsPlots/pendigitsSVCLearningCurveRBF.png')
+
+    # SVM over Epochs Sigmoid
+
+    svm_array = []
+    training_depth_array = []
+    testing_depth_array = []
+    cross_val_score_array = []
+
+    print('SVM Different Epochs Sigmoid')
+    for i in np.arange(1000):
+        svm_array.append(i)
+        learner = svm.SVC(kernel='sigmoid', verbose=100, max_iter=i)
+        learner = learner.fit(training_x,training_y)
+        score = learner.score(training_x, training_y)
+        print(score)
+        training_depth_array.append(score)
+        cross_score = learner.score(testing_x, testing_y)
+        cross_val_score_array.append(cross_score)
+
+    plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+                          "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
+                          'PenDigitsPlots/pendigitsSVMEpochsSigmoid.png')
+
+    # SVM over Epochs RBF
+    svm_array = []
+    training_depth_array = []
+    cross_val_score_array = []
+
+    print('SVM Different Epochs RBF')
+    for i in np.arange(1000):
+        svm_array.append(i)
+        learner = svm.SVC(kernel='rbf', verbose=100, max_iter=i)
+        learner = learner.fit(training_x, training_y)
+        score = learner.score(training_x, training_y)
+        print(score)
+        training_depth_array.append(score)
+        cross_score = learner.score(testing_x, testing_y)
+        cross_val_score_array.append(cross_score)
+
+    plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+                          "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
+                          'PenDigitsPlots/pendigitsSVMEpochsRBF.png')
 
 def plot_validation_curve(param_array,training_array,cross_val_array,title,y, x, limit,file):
     plt.plot(param_array, training_array, label='Training')
