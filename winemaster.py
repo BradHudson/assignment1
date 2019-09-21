@@ -504,6 +504,7 @@ def main():
     svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
     svc_cv.fit(training_x, training_y)
     best_params = svc_cv.best_params_ #{'gamma': 0.51, 'C': 0.01}
+    print(best_params)
     final_svc = svm.SVC(kernel='sigmoid', **best_params)
     final_svc.fit(training_x, training_y)
     print(final_svc.score(testing_x, testing_y))
@@ -532,6 +533,7 @@ def main():
     svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
     svc_cv.fit(training_x, training_y)
     best_params = svc_cv.best_params_ #{'gamma': 1.31, 'C': 0.91}
+    print(best_params)
     final_svc = svm.SVC(kernel='rbf', **best_params)
     final_svc.fit(training_x, training_y)
     print(final_svc.score(testing_x, testing_y))

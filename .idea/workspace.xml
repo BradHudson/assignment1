@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="014216b4-2ce9-41f7-b963-ce1dc973840b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/pendigitsmaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitsmaster.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WinePlots/wineSVCLearningCurveRBF.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineSVCLearningCurveRBF.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winemaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/winemaster.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,13 +44,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/winemaster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="680" column="88" selection-start-line="680" selection-start-column="88" selection-end-line="680" selection-end-column="88" />
+            <state relative-caret-position="90">
+              <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WinePlots/wineSVCLearningCurveRBF.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -64,15 +70,6 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVCLearningCurveRBF.png">
           <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_split.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="2024" column="43" lean-forward="true" selection-start-line="2024" selection-start-column="43" selection-end-line="2024" selection-end-column="43" />
-            </state>
-          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -162,8 +159,8 @@
         <option value="$PROJECT_DIR$/adultmaster.py" />
         <option value="$PROJECT_DIR$/Dataset/adult-training.csv" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/winemaster.py" />
         <option value="$PROJECT_DIR$/pendigitsmaster.py" />
+        <option value="$PROJECT_DIR$/winemaster.py" />
       </list>
     </option>
   </component>
@@ -222,7 +219,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pendigitsmaster">
+  <component name="RunManager" selected="Python.winemaster">
     <configuration name="adultmaster" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="7641" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -330,8 +327,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pendigitsmaster" />
         <item itemvalue="Python.winemaster" />
+        <item itemvalue="Python.pendigitsmaster" />
         <item itemvalue="Python.adultmaster" />
         <item itemvalue="Python.pendigits_dt" />
         <item itemvalue="Python.wine_boost" />
@@ -555,9 +552,6 @@
     <entry file="file://$PROJECT_DIR$/WinePlots/wineGammaSigmoid.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineSVCLearningCurveRBF.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/svm/classes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -671,10 +665,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineSVCLearningCurveRBF.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/winemaster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="680" column="88" selection-start-line="680" selection-start-column="88" selection-end-line="680" selection-end-column="88" />
+        <state relative-caret-position="90">
+          <caret line="38" column="24" lean-forward="true" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
