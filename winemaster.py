@@ -678,6 +678,7 @@ def plot_validation_curve(param_array,training_array,cross_val_array,title,y, x,
     plt.close()
 
 
+# https://scikit-learn.org/stable/auto_examples/model_selection/plot_learning_curve.html
 def plot_learning_curve(train_scores, test_scores, train_sizes, file_name, title=""):
     train_scores_mean = np.mean(train_scores, axis=1)
     train_scores_std = np.std(train_scores, axis=1)
