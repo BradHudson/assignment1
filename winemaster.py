@@ -100,35 +100,36 @@ def main():
     #                       "Cross Validation Score vs Max Depth Entropy", 'Score', 'Max Depth', [1, 50],
     #                       'WinePlots/winemaxdepthEntropy.png')
     #
-    # # DT Random Search & Learning Curve
-    # max_depths = np.arange(1, 20, 1)
-    # params = {'criterion': ['gini', 'entropy'], 'max_depth': max_depths}
-    # learner = DecisionTreeClassifier(random_state=seed)
-    # start = time.clock()
-    # dt_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
-    # dt_cv.fit(training_x, training_y)
-    # dt_train_time = time.clock() - start
-    # print('Time to Train: ' + str(dt_train_time))
-    # print('Training Accuracy: ' + str(dt_cv.score(training_x, training_y)))
-    # print('Testing Accuracy: ' + str(dt_cv.score(testing_x, testing_y)))
-    # print(dt_cv.best_params_)  # entropy, max depth 11
-    # start = time.clock()
-    # test_y_predicted = dt_cv.predict(testing_x)
-    # dt_query_time = time.clock() - start
-    # print('Time to Query: ' + str(dt_query_time))
-    # y_true = pd.Series(testing_y)
-    # y_pred = pd.Series(test_y_predicted)
-    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
-    #
-    # train_sizes, train_scores, test_scores = learning_curve(
-    #     dt_cv,
-    #     training_x,
-    #     training_y, n_jobs=-1,
-    #     cv=10,
-    #     train_sizes=np.linspace(.1, 1.0, 10),
-    #     random_state=seed)
-    #
-    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineDTLearningCurve.png', "Learning Curve DT")
+    # DT Random Search & Learning Curve
+    max_depths = np.arange(1, 20, 1)
+    params = {'criterion': ['gini', 'entropy'], 'max_depth': max_depths}
+    learner = DecisionTreeClassifier(random_state=seed)
+    start = time.clock()
+    dt_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
+    dt_cv.fit(training_x, training_y)
+    print(dt_cv.best_params_)
+    dt_train_time = time.clock() - start
+    print('Time to Train: ' + str(dt_train_time))
+    print('Training Accuracy: ' + str(dt_cv.score(training_x, training_y)))
+    print('Testing Accuracy: ' + str(dt_cv.score(testing_x, testing_y)))
+    print(dt_cv.best_params_)  # entropy, max depth 11
+    start = time.clock()
+    test_y_predicted = dt_cv.predict(testing_x)
+    dt_query_time = time.clock() - start
+    print('Time to Query: ' + str(dt_query_time))
+    y_true = pd.Series(testing_y)
+    y_pred = pd.Series(test_y_predicted)
+    print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+
+    train_sizes, train_scores, test_scores = learning_curve(
+        dt_cv,
+        training_x,
+        training_y, n_jobs=-1,
+        cv=10,
+        train_sizes=np.linspace(.1, 1.0, 10),
+        random_state=seed)
+
+    plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineDTLearningCurve.png', "Learning Curve DT")
 
     # # Adaboost Max Depth
     #
@@ -496,59 +497,59 @@ def main():
 
     # #Learning Curve Sigmoid
     #
-    params = {'gamma': np.arange(0.01, 2, 0.1), 'C':np.arange(0.01, 1, 0.1)}
-    learner = svm.SVC(kernel='sigmoid')
-
-    print('starting grid  search')
-    svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
-    svc_cv.fit(training_x, training_y)
-    best_params = svc_cv.best_params_ #{'gamma': 0.51, 'C': 0.01}
-    final_svc = svm.SVC(kernel='sigmoid', **best_params)
-    final_svc.fit(training_x, training_y)
-    print(final_svc.score(testing_x, testing_y))
-    print(final_svc.score(training_x, training_y))
-    test_y_predicted = final_svc.predict(testing_x)
-    y_true = pd.Series(testing_y)
-    y_pred = pd.Series(test_y_predicted)
-    print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
-
-    train_sizes, train_scores, test_scores = learning_curve(
-        final_svc,
-        training_x,
-        training_y, n_jobs=-1,
-        cv=10,
-        train_sizes=np.linspace(.1, 1.0, 10),
-        random_state=seed)
-
-    plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurveSigmoid.png')
-
-    # Learning Curve RBF
-
-    params = {'gamma': np.arange(0.01, 2, 0.1), 'C':np.arange(0.01, 1, 0.1)}
-    learner = svm.SVC(kernel='rbf')
-
-    print('starting grid  search')
-    svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
-    svc_cv.fit(training_x, training_y)
-    best_params = svc_cv.best_params_ #{'gamma': 1.31, 'C': 0.91}
-    final_svc = svm.SVC(kernel='rbf', **best_params)
-    final_svc.fit(training_x, training_y)
-    print(final_svc.score(testing_x, testing_y))
-    print(final_svc.score(training_x, training_y))
-    test_y_predicted = final_svc.predict(testing_x)
-    y_true = pd.Series(testing_y)
-    y_pred = pd.Series(test_y_predicted)
-    print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
-
-    train_sizes, train_scores, test_scores = learning_curve(
-        final_svc,
-        training_x,
-        training_y, n_jobs=-1,
-        cv=10,
-        train_sizes=np.linspace(.1, 1.0, 10),
-        random_state=seed)
-
-    plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurveRBF.png')
+    # params = {'gamma': np.arange(0.01, 2, 0.1), 'C':np.arange(0.01, 1, 0.1)}
+    # learner = svm.SVC(kernel='sigmoid')
+    #
+    # print('starting grid  search')
+    # svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    # svc_cv.fit(training_x, training_y)
+    # best_params = svc_cv.best_params_ #{'gamma': 0.51, 'C': 0.01}
+    # final_svc = svm.SVC(kernel='sigmoid', **best_params)
+    # final_svc.fit(training_x, training_y)
+    # print(final_svc.score(testing_x, testing_y))
+    # print(final_svc.score(training_x, training_y))
+    # test_y_predicted = final_svc.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     final_svc,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=10,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurveSigmoid.png')
+    #
+    # # Learning Curve RBF
+    #
+    # params = {'gamma': np.arange(0.01, 2, 0.1), 'C':np.arange(0.01, 1, 0.1)}
+    # learner = svm.SVC(kernel='rbf')
+    #
+    # print('starting grid  search')
+    # svc_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=50)
+    # svc_cv.fit(training_x, training_y)
+    # best_params = svc_cv.best_params_ #{'gamma': 1.31, 'C': 0.91}
+    # final_svc = svm.SVC(kernel='rbf', **best_params)
+    # final_svc.fit(training_x, training_y)
+    # print(final_svc.score(testing_x, testing_y))
+    # print(final_svc.score(training_x, training_y))
+    # test_y_predicted = final_svc.predict(testing_x)
+    # y_true = pd.Series(testing_y)
+    # y_pred = pd.Series(test_y_predicted)
+    # print(pd.crosstab(y_true, y_pred, rownames=['True'], colnames=['Predicted'], margins=True))
+    #
+    # train_sizes, train_scores, test_scores = learning_curve(
+    #     final_svc,
+    #     training_x,
+    #     training_y, n_jobs=-1,
+    #     cv=10,
+    #     train_sizes=np.linspace(.1, 1.0, 10),
+    #     random_state=seed)
+    #
+    # plot_learning_curve(train_scores, test_scores, train_sizes, 'WinePlots/wineSVCLearningCurveRBF.png')
 
     # SVM over Epochs Sigmoid
 
@@ -591,6 +592,90 @@ def main():
     # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
     #                       "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
     #                       'WinePlots/wineSVMEpochsRBF.png')
+
+    # Timing Wine
+
+    # # Training Time
+    # dt_clf = DecisionTreeClassifier(max_depth=19, criterion='gini')
+    # ada_clf = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=11),n_estimators=40, learning_rate=1)
+    # knn_clf = KNeighborsClassifier(p=1, n_neighbors=2)
+    # ann_clf = MLPClassifier(hidden_layer_sizes=(22,), alpha=0.0051, activation='relu')
+    # svm_rbf_clf = svm.SVC(kernel='rbf', gamma=1.31, C=0.91)
+    # svm_sigmoid_clf = svm.SVC(kernel='sigmoid', gamma=0.51, C=0.01)
+    # labels = ["Decision Tree", "Adaboost", "KNN", "ANN", "SVM_RBF", "SVM_Sigmoid"]
+    # count = 0
+    # for clf in [dt_clf,ada_clf,knn_clf, ann_clf, svm_rbf_clf, svm_sigmoid_clf]:
+    #     iteration_array = []
+    #     train_array = []
+    #     query_array = []
+    #     for i in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
+    #         if count == 3:
+    #             clf = MLPClassifier(hidden_layer_sizes=(22,), alpha=0.0051, activation='relu')
+    #         if count == 4:
+    #             clf = svm.SVC(kernel='rbf', gamma=1.31, C=0.91)
+    #         if count == 5:
+    #             clf = svm.SVC(kernel='sigmoid', gamma=0.51, C=0.01)
+    #         X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=seed)
+    #         iteration_array.append(X_train.shape[0])
+    #         st = time.clock()
+    #         clf.fit(X_train, y_train)
+    #         train_time = time.clock() - st
+    #         train_array.append(train_time)
+    #         # st = time.clock()
+    #         # clf.predict(X_test)
+    #         # query_time = time.clock() - st
+    #         # query_array.append(query_time)
+    #     plt.plot(iteration_array, train_array, label=labels[count])
+    #     # plt.plot(iteration_array, query_array, label=str(clf) + 'Query Time')
+    #     plt.legend(loc=4, fontsize=8)
+    #     plt.title("Training Times for Learners", fontdict={'size': 16})
+    #     plt.ylabel("Time")
+    #     plt.xlabel("Iteration Size")
+    #     count = count + 1
+    # plt.savefig("WineTrainingTimes.png")
+    # plt.close()
+    #
+    # # Query Time
+    #
+    # dt_clf = DecisionTreeClassifier(max_depth=19, criterion='gini')
+    # ada_clf = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=11),n_estimators=40, learning_rate=1)
+    # knn_clf = KNeighborsClassifier(p=1, n_neighbors=2)
+    # ann_clf = MLPClassifier(hidden_layer_sizes=(22,), alpha=0.0051, activation='relu')
+    # svm_rbf_clf = svm.SVC(kernel='rbf', gamma=1.31, C=0.91)
+    # svm_sigmoid_clf = svm.SVC(kernel='sigmoid', gamma=0.51, C=0.01)
+    # labels = ["Decision Tree", "Adaboost", "KNN", "ANN", "SVM_RBF", "SVM_Sigmoid"]
+    # count = 0
+    # for clf in [dt_clf, ada_clf, knn_clf, ann_clf, svm_rbf_clf, svm_sigmoid_clf]:
+    #     iteration_array = []
+    #     train_array = []
+    #     query_array = []
+    #     for i in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
+    #         if count == 3:
+    #             clf = MLPClassifier(hidden_layer_sizes=(22,), alpha=0.0051, activation='relu')
+    #         if count == 4:
+    #             clf = svm.SVC(kernel='rbf', gamma=1.31, C=0.91)
+    #         if count == 5:
+    #             clf = svm.SVC(kernel='sigmoid', gamma=0.51, C=0.01)
+    #         X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=seed)
+    #         iteration_array.append(X_train.shape[0])
+    #         st = time.clock()
+    #         clf.fit(X_train, y_train)
+    #         train_time = time.clock() - st
+    #         train_array.append(train_time)
+    #         st = time.clock()
+    #         clf.predict(X_test)
+    #         query_time = time.clock() - st
+    #         query_array.append(query_time)
+    #     #plt.plot(iteration_array, train_array, label=labels[count])
+    #     plt.plot(iteration_array, query_array, label=labels[count])
+    #     plt.legend(loc=4, fontsize=8)
+    #     plt.title("Query Times for Learners", fontdict={'size': 16})
+    #     plt.ylabel("Time")
+    #     plt.xlabel("Iteration Size")
+    #     count = count + 1
+    # plt.savefig("WineQueryTimes.png")
+    # plt.close()
+
 
 def plot_validation_curve(param_array,training_array,cross_val_array,title,y, x, limit,file, testing_depth_array = []):
     plt.plot(param_array, training_array, label='Training')

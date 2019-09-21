@@ -93,6 +93,7 @@ def main():
     # dt_cv = RandomizedSearchCV(learner, n_jobs=1, param_distributions=params, refit=True, n_iter=40)
     # start = time.clock()
     # dt_cv.fit(training_x, training_y)
+    # print(dt_cv.best_params_)
     # dt_train_time = time.clock() - start
     # print('Time to Train: ' + str(dt_train_time))
     # print('Training Accuracy: ' + str(dt_cv.score(training_x, training_y)))
@@ -702,45 +703,129 @@ def main():
 
     # SVM over Epochs Sigmoid
 
-    svm_array = []
-    training_depth_array = []
-    testing_depth_array = []
-    cross_val_score_array = []
+    # svm_array = []
+    # training_depth_array = []
+    # testing_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Different Epochs Sigmoid')
+    # for i in np.arange(1000):
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='sigmoid', verbose=100, max_iter=i)
+    #     learner = learner.fit(training_x,training_y)
+    #     score = learner.score(training_x, training_y)
+    #     print(score)
+    #     training_depth_array.append(score)
+    #     cross_score = learner.score(testing_x, testing_y)
+    #     cross_val_score_array.append(cross_score)
+    #
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
+    #                       'PenDigitsPlots/pendigitsSVMEpochsSigmoid.png')
+    #
+    # # SVM over Epochs RBF
+    # svm_array = []
+    # training_depth_array = []
+    # cross_val_score_array = []
+    #
+    # print('SVM Different Epochs RBF')
+    # for i in np.arange(1000):
+    #     svm_array.append(i)
+    #     learner = svm.SVC(kernel='rbf', verbose=100, max_iter=i)
+    #     learner = learner.fit(training_x, training_y)
+    #     score = learner.score(training_x, training_y)
+    #     print(score)
+    #     training_depth_array.append(score)
+    #     cross_score = learner.score(testing_x, testing_y)
+    #     cross_val_score_array.append(cross_score)
+    #
+    # plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
+    #                       "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
+    #                       'PenDigitsPlots/pendigitsSVMEpochsRBF.png')
 
-    print('SVM Different Epochs Sigmoid')
-    for i in np.arange(1000):
-        svm_array.append(i)
-        learner = svm.SVC(kernel='sigmoid', verbose=100, max_iter=i)
-        learner = learner.fit(training_x,training_y)
-        score = learner.score(training_x, training_y)
-        print(score)
-        training_depth_array.append(score)
-        cross_score = learner.score(testing_x, testing_y)
-        cross_val_score_array.append(cross_score)
+    # Timing PenDigits
 
-    plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
-                          "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
-                          'PenDigitsPlots/pendigitsSVMEpochsSigmoid.png')
+    dt_clf = DecisionTreeClassifier(max_depth=12, criterion='entropy')
+    ada_clf = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=8), n_estimators=50, learning_rate=1)
+    knn_clf = KNeighborsClassifier(p=2, n_neighbors=2)
+    ann_clf = MLPClassifier(hidden_layer_sizes=(16,), alpha=0.0041, activation='relu')
+    svm_rbf_clf = svm.SVC(kernel='rbf', gamma=0.21, C=0.71)
+    svm_sigmoid_clf = svm.SVC(kernel='sigmoid', gamma=0.01, C=0.51)
+    labels = ["Decision Tree", "Adaboost", "KNN", "ANN", "SVM_RBF", "SVM_Sigmoid"]
+    count = 0
+    for clf in [dt_clf, ada_clf, knn_clf, ann_clf, svm_rbf_clf, svm_sigmoid_clf]:
+        iteration_array = []
+        train_array = []
+        query_array = []
+        for i in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
+            if count == 3:
+                clf = MLPClassifier(hidden_layer_sizes=(16,), alpha=0.0041, activation='relu')
+            if count == 4:
+                clf = svm.SVC(kernel='rbf', gamma=0.21, C=0.71)
+            if count == 5:
+                clf = svm.SVC(kernel='sigmoid', gamma=0.01, C=0.51)
+            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=42)
+            iteration_array.append(X_train.shape[0])
+            st = time.clock()
+            clf.fit(X_train, y_train)
+            train_time = time.clock() - st
+            train_array.append(train_time)
+            # st = time.clock()
+            # clf.predict(X_test)
+            # query_time = time.clock() - st
+            # query_array.append(query_time)
+        plt.plot(iteration_array, train_array, label=labels[count])
+        # plt.plot(iteration_array, query_array, label=str(clf) + 'Query Time')
+        plt.legend(loc=4, fontsize=8)
+        plt.title("Training Times for Learners", fontdict={'size': 16})
+        plt.ylabel("Time")
+        plt.xlabel("Iteration Size")
+        count = count + 1
+    plt.savefig("PendigitsTrainingTimes.png")
+    plt.close()
 
-    # SVM over Epochs RBF
-    svm_array = []
-    training_depth_array = []
-    cross_val_score_array = []
+    #Query Time
 
-    print('SVM Different Epochs RBF')
-    for i in np.arange(1000):
-        svm_array.append(i)
-        learner = svm.SVC(kernel='rbf', verbose=100, max_iter=i)
-        learner = learner.fit(training_x, training_y)
-        score = learner.score(training_x, training_y)
-        print(score)
-        training_depth_array.append(score)
-        cross_score = learner.score(testing_x, testing_y)
-        cross_val_score_array.append(cross_score)
+    dt_clf = DecisionTreeClassifier(max_depth=12, criterion='entropy')
+    ada_clf = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(max_depth=8), n_estimators=50, learning_rate=1)
+    knn_clf = KNeighborsClassifier(p=2, n_neighbors=2)
+    ann_clf = MLPClassifier(hidden_layer_sizes=(16,), alpha=0.0041, activation='relu')
+    svm_rbf_clf = svm.SVC(kernel='rbf', gamma=0.21, C=0.71)
+    svm_sigmoid_clf = svm.SVC(kernel='sigmoid', gamma=0.01, C=0.51)
+    labels = ["Decision Tree", "Adaboost", "KNN", "ANN", "SVM_RBF", "SVM_Sigmoid"]
+    count = 0
+    for clf in [dt_clf, ada_clf, knn_clf, ann_clf, svm_rbf_clf, svm_sigmoid_clf]:
+        iteration_array = []
+        train_array = []
+        query_array = []
+        for i in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
+            if count == 3:
+                clf = MLPClassifier(hidden_layer_sizes=(16,), alpha=0.0041, activation='relu')
+            if count == 4:
+                clf = svm.SVC(kernel='rbf', gamma=0.21, C=0.71)
+            if count == 5:
+                clf = svm.SVC(kernel='sigmoid', gamma=0.01, C=0.51)
+            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=42)
+            iteration_array.append(X_train.shape[0])
+            st = time.clock()
+            clf.fit(X_train, y_train)
+            train_time = time.clock() - st
+            train_array.append(train_time)
+            st = time.clock()
+            clf.predict(X_test)
+            query_time = time.clock() - st
+            query_array.append(query_time)
+        # plt.plot(iteration_array, train_array, label=labels[count])
+        plt.plot(iteration_array, query_array, label=labels[count])
+        plt.legend(loc=4, fontsize=8)
+        plt.title("Query Times for Learners", fontdict={'size': 16})
+        plt.ylabel("Time")
+        plt.xlabel("Iteration Size")
+        count = count + 1
+    plt.savefig("PenDigitsQueryTimes.png")
+    plt.close()
 
-    plot_validation_curve(svm_array, training_depth_array, cross_val_score_array,
-                          "Cross Validation Score vs. Epochs", 'Score', 'Epochs', [0, 1000],
-                          'PenDigitsPlots/pendigitsSVMEpochsRBF.png')
+
 
 def plot_validation_curve(param_array,training_array,cross_val_array,title,y, x, limit,file):
     plt.plot(param_array, training_array, label='Training')

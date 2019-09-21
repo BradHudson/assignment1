@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="014216b4-2ce9-41f7-b963-ce1dc973840b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLayers.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLayers.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLearningCurve.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNNeurons.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsANNNeurons.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsGammaRBF.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsGammaRBF.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PenDigitsPlots/pendigitsGammaSigmoid.png" beforeDir="false" afterPath="$PROJECT_DIR$/PenDigitsPlots/pendigitsGammaSigmoid.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WinePlots/wineANNLayers.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineANNLayers.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WinePlots/wineANNLearningCurve.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineANNLearningCurve.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WinePlots/wineGammaRBF.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineGammaRBF.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WinePlots/wineGammaSigmoid.png" beforeDir="false" afterPath="$PROJECT_DIR$/WinePlots/wineGammaSigmoid.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pendigitsmaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/pendigitsmaster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/winemaster.py" beforeDir="false" afterPath="$PROJECT_DIR$/winemaster.py" afterDir="false" />
     </list>
@@ -23,69 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pendigitsmaster.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="713" column="52" lean-forward="true" selection-start-line="713" selection-start-column="52" selection-end-line="713" selection-end-column="52" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVMEpochsRBF.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVMEpochsSigmoid.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsGammaSigmoid.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsCRBF.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsCSigmoid.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsGammaRBF.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/adultmaster.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNEpochs.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/winemaster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="695">
-              <caret line="592" column="61" lean-forward="true" selection-start-line="552" selection-start-column="4" selection-end-line="592" selection-end-column="61" />
+            <state relative-caret-position="394">
+              <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -104,7 +37,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>loss</find>
       <find>validation</find>
       <find>validation_scores_</find>
       <find>validation_sc</find>
@@ -134,6 +66,7 @@
       <find>predict</find>
       <find>random_state</find>
       <find>cross</find>
+      <find>base_estimator_</find>
     </findStrings>
     <replaceStrings>
       <replace>,</replace>
@@ -170,8 +103,8 @@
         <option value="$PROJECT_DIR$/Dataset/adult-test.csv" />
         <option value="$PROJECT_DIR$/adultmaster.py" />
         <option value="$PROJECT_DIR$/Dataset/adult-training.csv" />
-        <option value="$PROJECT_DIR$/winemaster.py" />
         <option value="$PROJECT_DIR$/pendigitsmaster.py" />
+        <option value="$PROJECT_DIR$/winemaster.py" />
       </list>
     </option>
   </component>
@@ -200,7 +133,7 @@
             <path>
               <item name="7641" type="b2602c69:ProjectViewProjectNode" />
               <item name="7641" type="462c0819:PsiDirectoryNode" />
-              <item name="PenDigitsPlots" type="462c0819:PsiDirectoryNode" />
+              <item name="WinePlots" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -235,7 +168,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pendigitsmaster">
+  <component name="RunManager" selected="Python.winemaster">
     <configuration name="adultmaster" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="7641" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -343,8 +276,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.pendigitsmaster" />
         <item itemvalue="Python.winemaster" />
+        <item itemvalue="Python.pendigitsmaster" />
         <item itemvalue="Python.adultmaster" />
         <item itemvalue="Python.pendigits_dt" />
         <item itemvalue="Python.wine_boost" />
@@ -372,6 +305,15 @@
       <configuration name="pytest in test_curve.py" configurationId="tests" />
     </history-entry>
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="10" y="23" width="1666" height="1027" extended-state="0" />
     <editor active="true" />
@@ -381,15 +323,15 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3290566" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4117647" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.26566038" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19679144" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.26524064" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32941177" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32941177" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32941177" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32941177" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -409,15 +351,45 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/winemaster.py</url>
-          <line>505</line>
-          <option name="timeStamp" value="46" />
+          <url>file://$PROJECT_DIR$/pendigitsmaster.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>clf</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>X_train.shape[0]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>X_train.shape</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>X_train.shape(0)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>learner.fit(training_x, training_y)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>dt_cv.best_estimator_</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>learner.predict(testing_x)</expression-string>
         <language-id>Python</language-id>
@@ -433,56 +405,9 @@
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>len(cross_val_array)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cross_val_array.len</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cross_val_array</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cross_val_array.empty()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>cross_val_array.empty</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>if not cross_val_array</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineKNNLearningCurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineManhattanKNN.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineEuclideanKNN.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dataset/winequality-white.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="-12" />
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsEuclideanKNN.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -500,9 +425,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedlearningcurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WinePlots/wineDTLearningCurve.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/WinePlots/wineboostedLearningRate.png">
@@ -574,9 +496,6 @@
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNNeurons.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLearningCurve.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file:///usr/local/lib/python3.7/site-packages/sklearn/model_selection/_validation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1275">
@@ -642,16 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/winemaster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="592" column="61" lean-forward="true" selection-start-line="552" selection-start-column="4" selection-end-line="592" selection-end-column="61" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsCRBF.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -664,21 +573,49 @@
     <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsCSigmoid.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVMEpochsSigmoid.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVMEpochsRBF.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsANNLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/QueryTimes.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrainingTimes.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/pendigitsmaster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="713" column="52" lean-forward="true" selection-start-line="713" selection-start-column="52" selection-end-line="713" selection-end-column="52" />
+        <state relative-caret-position="628">
+          <caret line="807" column="63" lean-forward="true" selection-start-line="807" selection-start-column="63" selection-end-line="807" selection-end-column="63" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVMEpochsSigmoid.png">
+    <entry file="file://$PROJECT_DIR$/PenDigitsQueryTimes.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/PenDigitsPlots/pendigitsSVMEpochsRBF.png">
+    <entry file="file://$PROJECT_DIR$/PendigitsTrainingTimes.png">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WinePlots/wineDTLearningCurve.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/winemaster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="101" column="5" lean-forward="true" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
