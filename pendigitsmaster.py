@@ -763,18 +763,14 @@ def main():
                 clf = svm.SVC(kernel='rbf', gamma=0.21, C=0.71)
             if count == 5:
                 clf = svm.SVC(kernel='sigmoid', gamma=0.01, C=0.51)
-            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=42)
+            X_train = training_x[:int(training_x.shape[0] * i), :]
+            Y_train = training_y[:int(training_y.shape[0] * i)]
             iteration_array.append(X_train.shape[0])
             st = time.clock()
-            clf.fit(X_train, y_train)
+            clf.fit(X_train, Y_train)
             train_time = time.clock() - st
             train_array.append(train_time)
-            # st = time.clock()
-            # clf.predict(X_test)
-            # query_time = time.clock() - st
-            # query_array.append(query_time)
         plt.plot(iteration_array, train_array, label=labels[count])
-        # plt.plot(iteration_array, query_array, label=str(clf) + 'Query Time')
         plt.legend(loc=4, fontsize=8)
         plt.title("Training Times for Learners", fontdict={'size': 16})
         plt.ylabel("Time")
@@ -797,24 +793,14 @@ def main():
         iteration_array = []
         train_array = []
         query_array = []
+        clf.fit(training_x, training_y)
         for i in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
-            if count == 3:
-                clf = MLPClassifier(hidden_layer_sizes=(16,), alpha=0.0041, activation='relu')
-            if count == 4:
-                clf = svm.SVC(kernel='rbf', gamma=0.21, C=0.71)
-            if count == 5:
-                clf = svm.SVC(kernel='sigmoid', gamma=0.01, C=0.51)
-            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=42)
-            iteration_array.append(X_train.shape[0])
-            st = time.clock()
-            clf.fit(X_train, y_train)
-            train_time = time.clock() - st
-            train_array.append(train_time)
+            X_test = testing_x[:int(testing_x.shape[0] * i), :]
+            iteration_array.append(X_test.shape[0])
             st = time.clock()
             clf.predict(X_test)
             query_time = time.clock() - st
             query_array.append(query_time)
-        # plt.plot(iteration_array, train_array, label=labels[count])
         plt.plot(iteration_array, query_array, label=labels[count])
         plt.legend(loc=4, fontsize=8)
         plt.title("Query Times for Learners", fontdict={'size': 16})
@@ -823,8 +809,6 @@ def main():
         count = count + 1
     plt.savefig("PenDigitsQueryTimes.png")
     plt.close()
-
-
 
 def plot_validation_curve(param_array,training_array,cross_val_array,title,y, x, limit,file):
     plt.plot(param_array, training_array, label='Training')

@@ -604,6 +604,7 @@ def main():
     svm_sigmoid_clf = svm.SVC(kernel='sigmoid', gamma=0.51, C=0.01)
     labels = ["Decision Tree", "Adaboost", "KNN", "ANN", "SVM_RBF", "SVM_Sigmoid"]
     count = 0
+
     for clf in [dt_clf,ada_clf,knn_clf, ann_clf, svm_rbf_clf, svm_sigmoid_clf]:
         iteration_array = []
         train_array = []
@@ -615,18 +616,14 @@ def main():
                 clf = svm.SVC(kernel='rbf', gamma=1.31, C=0.91)
             if count == 5:
                 clf = svm.SVC(kernel='sigmoid', gamma=0.51, C=0.01)
-            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=seed)
+            X_train = training_x[:int(training_x.shape[0]*i),:]
+            Y_train = training_y[:int(training_y.shape[0]*i)]
             iteration_array.append(X_train.shape[0])
             st = time.clock()
-            clf.fit(X_train, y_train)
+            clf.fit(X_train, Y_train)
             train_time = time.clock() - st
             train_array.append(train_time)
-            # st = time.clock()
-            # clf.predict(X_test)
-            # query_time = time.clock() - st
-            # query_array.append(query_time)
         plt.plot(iteration_array, train_array, label=labels[count])
-        # plt.plot(iteration_array, query_array, label=str(clf) + 'Query Time')
         plt.legend(loc=4, fontsize=8)
         plt.title("Training Times for Learners", fontdict={'size': 16})
         plt.ylabel("Time")
@@ -647,26 +644,15 @@ def main():
     count = 0
     for clf in [dt_clf, ada_clf, knn_clf, ann_clf, svm_rbf_clf, svm_sigmoid_clf]:
         iteration_array = []
-        train_array = []
         query_array = []
+        clf.fit(training_x,training_y)
         for i in [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]:
-            if count == 3:
-                clf = MLPClassifier(hidden_layer_sizes=(22,), alpha=0.0051, activation='relu')
-            if count == 4:
-                clf = svm.SVC(kernel='rbf', gamma=1.31, C=0.91)
-            if count == 5:
-                clf = svm.SVC(kernel='sigmoid', gamma=0.51, C=0.01)
-            X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=i, random_state=seed)
-            iteration_array.append(X_train.shape[0])
-            st = time.clock()
-            clf.fit(X_train, y_train)
-            train_time = time.clock() - st
-            train_array.append(train_time)
+            X_test = testing_x[:int(testing_x.shape[0]*i),:]
+            iteration_array.append(X_test.shape[0])
             st = time.clock()
             clf.predict(X_test)
             query_time = time.clock() - st
             query_array.append(query_time)
-        #plt.plot(iteration_array, train_array, label=labels[count])
         plt.plot(iteration_array, query_array, label=labels[count])
         plt.legend(loc=4, fontsize=8)
         plt.title("Query Times for Learners", fontdict={'size': 16})
