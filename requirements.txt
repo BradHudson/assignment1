@@ -1,0 +1,5 @@
+git+https://github.com/hiive/mlrose.git
+matplotlib
+numpy
+pandas
+sklearn
