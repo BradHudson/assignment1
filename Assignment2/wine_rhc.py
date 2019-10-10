@@ -114,7 +114,7 @@ def main():
         results += "\nTraining time: %0.03f seconds" % (training_time,)
         results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
 
-        data = '{},{},{}\n'.format(iteration, correct, float(correct)/(correct+incorrect)*100.0, training_time,testing_time)
+        data = '{},{},{},{},{}\n'.format(iteration, correct, float(correct)/(correct+incorrect)*100.0, training_time,testing_time)
         print(data)
         with open("Results/NN/RHC_Train.csv", 'a') as f:
             f.write(data)
@@ -142,7 +142,7 @@ def main():
 
 
 
-        data = '{},{},{}\n'.format(iteration, correct, float(correct) / (correct + incorrect) * 100.0, training_time,
+        data = '{},{},{},{},{}\n'.format(iteration, correct, float(correct) / (correct + incorrect) * 100.0, training_time,
                                    testing_time)
         print(data)
         with open("Results/NN/RHC_Validate.csv", 'a') as f:
@@ -169,7 +169,7 @@ def main():
         results += "\nTraining time: %0.03f seconds" % (training_time,)
         results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
 
-        data = '{},{},{}\n'.format(iteration, correct, float(correct) / (correct + incorrect) * 100.0, training_time,
+        data = '{},{},{},{},{}\n'.format(iteration, correct, float(correct) / (correct + incorrect) * 100.0, training_time,
                                    testing_time)
         print(data)
         with open("Results/NN/RHC_Test.csv", 'a') as f:

@@ -747,21 +747,579 @@ def main():
     plt.savefig('images/Large/TSP_Time.png')
     plt.close()
 
-    # i = 0
-    #
-    # #Plot NN-Backprop
-    #
-    # i = 0
-    #
-    # #Plot NN-RHC
-    #
-    # i = 0
-    #
-    # #Plot NN-SA
-    #
-    # i = 0
-    #
-    # #Plot NN-GA
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    #Plot NN-RHC-Accuracy
+
+    with open('Results/NN/RHC_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[2]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC Train')
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/RHC_Validate.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[2]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC Cross Validation')
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/RHC_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[2]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC Test')
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN RHC vs Accuracy', fontdict={'size': 16})
+    plt.ylabel('Accuracy')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/RHC_Accuracy.png')
+    plt.close()
+
+    i = 0
+
+    #Plot RHC Time
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/RHC_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[3]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC Train')
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/RHC_Validate.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[3]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC Cross Validation')
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/RHC_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[3]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC Test')
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN RHC vs Training Time', fontdict={'size': 16})
+    plt.ylabel('Training Time')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/RHC_Train_Time.png')
+    plt.close()
+
+    # Plot SA Accuracy
+    i = 0
+    cooling_list = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+    iteration_list = [10, 100, 500, 1000, 2500, 5000]
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/SA_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i ==0:
+                i = 1
+                continue
+            else:
+                if i == 6 or i == 12 or i == 18 or i == 24 or i == 30 or i == 36 or i == 42 or i == 48 or i == 54 or i == 60 or i == 66:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label=row[1])
+                    rhc_iterations = []
+                    rhc_accuracy = []
+                    i = i + 1
+                else:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    i = i + 1
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN SA vs Accuracy', fontdict={'size': 16})
+    plt.ylabel('Accuracy')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/SA_Accuracy.png')
+    plt.close()
+
+    # Plot SA Accuracy
+    i = 0
+    cooling_list = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+    iteration_list = [10, 100, 500, 1000, 2500, 5000]
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/SA_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 6 or i == 12 or i == 18 or i == 24 or i == 30 or i == 36 or i == 42 or i == 48 or i == 54 or i == 60 or i == 66:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[4]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label=row[1])
+                    rhc_iterations = []
+                    rhc_accuracy = []
+                    i = i + 1
+                else:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[4]))
+                    i = i + 1
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN SA vs Training Time', fontdict={'size': 16})
+    plt.ylabel('Training Time')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/SA_Train_Time.png')
+    plt.close()
+
+    # Plot SA 0.95 Train/Test/CV Accuracy
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/SA_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 66:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='Train')
+                elif i >= 61:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    i = 0
+
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/SA_Validate.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 66:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    print(rhc_iterations)
+                    print(rhc_accuracy)
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='Validate')
+                elif i >= 61:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    i = 0
+
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/SA_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 66:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='Test')
+                elif i >= 61:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN Optimal SA(0.95) vs Accuracy', fontdict={'size': 16})
+    plt.ylabel('Training Time')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/SA_Accuracy_Optimal.png')
+    plt.close()
+
+    #NN GA Accuracy Different Mutates
+
+    i = 0
+
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/GA_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 6 or i == 12 or i == 18 or i == 24 or i == 30 or i == 36:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label=row[1])
+                    rhc_iterations = []
+                    rhc_accuracy = []
+                    i = i + 1
+                else:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    i = i + 1
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN GA vs Accuracy', fontdict={'size': 16})
+    plt.ylabel('Accuracy')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/GA_Accuracy_Params.png')
+    plt.close()
+
+    # NN GA Time Different Mutates
+
+    i = 0
+
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/GA_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 6 or i == 12 or i == 18 or i == 24 or i == 30 or i == 36:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[6]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label=row[1])
+                    rhc_iterations = []
+                    rhc_accuracy = []
+                    i = i + 1
+                else:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[6]))
+                    i = i + 1
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN GA vs Training Time', fontdict={'size': 16})
+    plt.ylabel('Training Time')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/GA_Time_Params.png')
+    plt.close()
+
+    #NN GA Optimal Accuracy
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/GA_Train.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 36:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='Train')
+                    i = i + 1
+                elif i > 36:
+                    break
+                elif i >= 31:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    i = 0
+
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/GA_Validate.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 36:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='Validate')
+                    i = i + 1
+                elif i > 36:
+                    break
+                elif i >= 31:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    i = 0
+
+    rhc_iterations = []
+    rhc_accuracy = []
+
+    with open('Results/NN/GA_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 36:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='Test')
+                    i = i + 1
+                elif i > 36:
+                    break
+                elif i >= 31:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('NN Optimal GA(500/250/20) vs Accuracy', fontdict={'size': 16})
+    plt.ylabel('Accuracy')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/GA_Accuracy_Optimal.png')
+    plt.close()
+
+    # Compare Best Algorithms for each and Times
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/GA_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 36:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='GA')
+                    i = i + 1
+                elif i > 36:
+                    break
+                elif i >= 31:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[5]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    #SA
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/SA_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 66:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='SA')
+                elif i >= 61:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[3]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    #Plot NN-RHC-Accuracy
+
+    with open('Results/NN/RHC_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[2]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC')
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('Random Optimization Test Accuracy', fontdict={'size': 16})
+    plt.ylabel('Accuracy')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/FINAL_Accuracy_Optimal.png')
+    plt.close()
+
+
+    # FINAL TIMES
+
+    # Compare Best Algorithms for each and Times
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/GA_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 36:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[6]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='GA')
+                    i = i + 1
+                elif i > 36:
+                    break
+                elif i >= 31:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[6]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    # SA
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    with open('Results/NN/SA_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                if i == 66:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[4]))
+                    plt.plot(rhc_iterations, rhc_accuracy,
+                             label='SA')
+                elif i >= 61:
+                    rhc_iterations.append(float(row[0]))
+                    rhc_accuracy.append(float(row[4]))
+                    i = i + 1
+                else:
+                    i = i + 1
+
+    i = 0
+    rhc_iterations = []
+    rhc_accuracy = []
+    # Plot NN-RHC-Accuracy
+
+    with open('Results/NN/RHC_Test.csv') as csvfile:
+        readCSV = csv.reader(csvfile, delimiter=',')
+        for row in readCSV:
+            if i == 0:
+                i = 1
+                continue
+            else:
+                rhc_iterations.append(float(row[0]))
+                rhc_accuracy.append(float(row[3]))
+
+    plt.plot(rhc_iterations, rhc_accuracy,
+             label='RHC')
+
+    plt.legend(loc=4, fontsize=8)
+    plt.title('Random Optimization Test Accuracy', fontdict={'size': 16})
+    plt.ylabel('Accuracy')
+    plt.xlabel('Iterations')
+    plt.savefig('images/NN/FINAL_TRAIN_TIMES.png')
+    plt.close()
 
     print('done')
 

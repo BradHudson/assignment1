@@ -31,10 +31,10 @@ def initialize_instances(file):
 
     return instances
 
-def train(oa, network, oaName, instances, measure):
+def train(oa, network, oaName, instances, measure,range):
     print "\nError results for %s\n---------------------------" % (oaName,)
 
-    for iteration in xrange(1000):
+    for iteration in xrange(range):
         oa.train()
 
         error = 0.00
@@ -56,6 +56,10 @@ def main():
     factory = BackPropagationNetworkFactory()
     measure = SumOfSquaresError()
     data_set = DataSet(train_instances)
+    iteration_list = [10, 100, 500, 1000, 2500, 5000]
+    cooling_list = [0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95]
+
+
 
     networks = []  # BackPropagationNetwork
     nnop = []  # NeuralNetworkOptimizationProblem
@@ -68,84 +72,114 @@ def main():
         networks.append(classification_network)
         nnop.append(NeuralNetworkOptimizationProblem(data_set, classification_network, measure))
 
-    #oa.append(RandomizedHillClimbing(nnop[0]))
-    oa.append(SimulatedAnnealing(1E11, .95, nnop[0]))
-    # oa.append(StandardGeneticAlgorithm(200, 100, 10, nnop[2]))
+    with open("Results/NN/SA_Train.csv", 'w') as f:
+        f.write('iterations,cooling,fitness,accuracy,train_time,test_time\n')
 
-    for i, name in enumerate(oa_names):
-        start = time.time()
-        correct = 0
-        incorrect = 0
+    with open("Results/NN/SA_Validate.csv", 'w') as f:
+        f.write('iterations,cooling,fitness,accuracy,train_time,test_time\n')
 
-        train(oa[i], networks[i], oa_names[i], train_instances, measure)
-        end = time.time()
-        training_time = end - start
+    with open("Results/NN/SA_Test.csv", 'w') as f:
+        f.write('iterations,cooling,fitness,accuracy,train_time,test_time\n')
 
-        optimal_instance = oa[i].getOptimal()
-        networks[i].setWeights(optimal_instance.getData())
+    for p in range(len(cooling_list)):
+        for i in range(len(iteration_list)):
+            cooling = cooling_list[p]
+            iteration = iteration_list[i]
+            start = time.time()
+            correct = 0
+            incorrect = 0
+            sim = SimulatedAnnealing(1E11, cooling, nnop[0])
 
-        start = time.time()
-        for instance in train_instances:
-            networks[i].setInputValues(instance.getData())
-            networks[i].run()
+            train(sim, networks[0], oa_names[0], train_instances, measure,iteration)
+            end = time.time()
+            training_time = end - start
 
-            predicted = instance.getLabel().getContinuous()
-            actual = networks[i].getOutputValues().get(0)
+            optimal_instance = sim.getOptimal()
+            networks[0].setWeights(optimal_instance.getData())
 
-            if abs(predicted - actual) < 0.5:
-                correct += 1
-            else:
-                incorrect += 1
+            start = time.time()
+            for instance in train_instances:
+                networks[0].setInputValues(instance.getData())
+                networks[0].run()
 
-        end = time.time()
-        testing_time = end - start
+                predicted = instance.getLabel().getContinuous()
+                actual = networks[0].getOutputValues().get(0)
 
-        results += "\nResults for Training %s: \nCorrectly classified %d instances." % (name, correct)
-        results += "\nIncorrectly classified Training %d instances.\nPercent correctly classified: %0.03f%%" % (incorrect, float(correct)/(correct+incorrect)*100.0)
-        results += "\nTraining time: %0.03f seconds" % (training_time,)
-        results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
+                if abs(predicted - actual) < 0.5:
+                    correct += 1
+                else:
+                    incorrect += 1
 
-        correct = 0
-        incorrect = 0
+            end = time.time()
+            testing_time = end - start
 
-        for instance in validate_instances:
-            networks[i].setInputValues(instance.getData())
-            networks[i].run()
+            results += "\nResults for Training %s: \nCorrectly classified %d instances." % ('SA', correct)
+            results += "\nIncorrectly classified Training %d instances.\nPercent correctly classified: %0.03f%%" % (incorrect, float(correct)/(correct+incorrect)*100.0)
+            results += "\nTraining time: %0.03f seconds" % (training_time,)
+            results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
 
-            predicted = instance.getLabel().getContinuous()
-            actual = networks[i].getOutputValues().get(0)
+            data = '{},{},{},{},{},{}\n'.format(iteration, cooling, correct, float(correct)/(correct+incorrect)*100.0, training_time,testing_time)
+            print(data)
+            with open("Results/NN/SA_Train.csv", 'a') as f:
+                f.write(data)
 
-            if abs(predicted - actual) < 0.5:
-                correct += 1
-            else:
-                incorrect += 1
+            correct = 0
+            incorrect = 0
 
-        results += "\nResults for Cross Validation %s: \nCorrectly classified %d instances." % (name, correct)
-        results += "\nIncorrectly classified Cross Validation %d instances.\nPercent correctly classified: %0.03f%%" % (
-        incorrect, float(correct) / (correct + incorrect) * 100.0)
-        results += "\nTraining time: %0.03f seconds" % (training_time,)
-        results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
+            for instance in validate_instances:
+                networks[0].setInputValues(instance.getData())
+                networks[0].run()
 
-        correct = 0
-        incorrect = 0
+                predicted = instance.getLabel().getContinuous()
+                actual = networks[0].getOutputValues().get(0)
 
-        for instance in test_instances:
-            networks[i].setInputValues(instance.getData())
-            networks[i].run()
+                if abs(predicted - actual) < 0.5:
+                    correct += 1
+                else:
+                    incorrect += 1
 
-            predicted = instance.getLabel().getContinuous()
-            actual = networks[i].getOutputValues().get(0)
+            results += "\nResults for Cross Validation %s: \nCorrectly classified %d instances." % ('SA', correct)
+            results += "\nIncorrectly classified Cross Validation %d instances.\nPercent correctly classified: %0.03f%%" % (
+            incorrect, float(correct) / (correct + incorrect) * 100.0)
+            results += "\nTraining time: %0.03f seconds" % (training_time,)
+            results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
 
-            if abs(predicted - actual) < 0.5:
-                correct += 1
-            else:
-                incorrect += 1
 
-        results += "\nResults for Testing %s: \nCorrectly classified %d instances." % (name, correct)
-        results += "\nIncorrectly classified Testing %d instances.\nPercent correctly classified: %0.03f%%" % (
-        incorrect, float(correct) / (correct + incorrect) * 100.0)
-        results += "\nTraining time: %0.03f seconds" % (training_time,)
-        results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
+
+            data = '{},{},{},{},{},{}\n'.format(iteration, cooling, correct, float(correct) / (correct + incorrect) * 100.0, training_time,
+                                       testing_time)
+            print(data)
+            with open("Results/NN/SA_Validate.csv", 'a') as f:
+                f.write(data)
+
+            correct = 0
+            incorrect = 0
+
+            for instance in test_instances:
+                networks[0].setInputValues(instance.getData())
+                networks[0].run()
+
+                predicted = instance.getLabel().getContinuous()
+                actual = networks[0].getOutputValues().get(0)
+
+                if abs(predicted - actual) < 0.5:
+                    correct += 1
+                else:
+                    incorrect += 1
+
+            results += "\nResults for Testing %s: \nCorrectly classified %d instances." % ("SA", correct)
+            results += "\nIncorrectly classified Testing %d instances.\nPercent correctly classified: %0.03f%%" % (
+            incorrect, float(correct) / (correct + incorrect) * 100.0)
+            results += "\nTraining time: %0.03f seconds" % (training_time,)
+            results += "\nTesting time: %0.03f seconds\n" % (testing_time,)
+
+            data = '{},{},{},{},{},{}\n'.format(iteration, cooling, correct, float(correct) / (correct + incorrect) * 100.0, training_time,
+                                       testing_time)
+            print(data)
+            with open("Results/NN/SA_Test.csv", 'a') as f:
+                f.write(data)
+
+
 
     print results
 
