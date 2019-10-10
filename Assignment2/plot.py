@@ -1315,8 +1315,8 @@ def main():
              label='RHC')
 
     plt.legend(loc=4, fontsize=8)
-    plt.title('Random Optimization Test Accuracy', fontdict={'size': 16})
-    plt.ylabel('Accuracy')
+    plt.title('Random Optimization Training Time', fontdict={'size': 16})
+    plt.ylabel('Training Time')
     plt.xlabel('Iterations')
     plt.savefig('images/NN/FINAL_TRAIN_TIMES.png')
     plt.close()

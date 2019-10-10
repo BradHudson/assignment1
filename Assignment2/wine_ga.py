@@ -56,10 +56,10 @@ def main():
     factory = BackPropagationNetworkFactory()
     measure = SumOfSquaresError()
     data_set = DataSet(train_instances)
-    iteration_list = [5000]
-    pop_list = [500]
-    mate_list = [250]
-    mutate_list = [20]
+    iteration_list = [10, 100, 500, 1000, 2500, 5000]
+    pop_list = [10, 20, 50, 100, 200, 500]
+    mate_list = [5, 10, 20, 50, 100, 250]
+    mutate_list = [2, 5, 5, 10, 10, 20]
 
 
     networks = []  # BackPropagationNetwork
